@@ -2,10 +2,26 @@
 <html>
     <head>
         <title>What's the Weather</title>
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@v0.180.0/build/three.module.js",
+                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.180.0/examples/jsm/"
+                }
+            }
+        </script>
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <h1>What's the Weather</h1>
-        <p>CS476 Project</p>
-        <p>Test Update</p>
+        <div class="header">
+            <h1 id="wtw-title">What's the Weather</h1>
+            <a href="index.html">Home</a>
+            <a href="signin.html">Sign In</a>
+            <a href="signup.html">Sign Up</a>
+        </div>
+        <p id="location-display">City, Country</p>
+        <div id="planet"></div>
+        <button id="start-button">Start Guessing</button>
+        <script type="module" src="js/main.js"></script>
     </body>
 </html>
