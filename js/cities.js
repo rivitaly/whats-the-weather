@@ -17,14 +17,9 @@ function getRandomCity() {
   let city = cityName.name;
   let countryCode = cityName.country
   let country = countryFormatter.of(countryCode)
-  let long = cityName.long;
-  let lat = cityName.lat;
+  let long = cityName.coord.lon;
+  let lat = cityName.coord.lat;
   return {city, country, long, lat};
 }
 
-//Testing outputs
-const button = document.getElementById("start-button")
-button.addEventListener('click', () => {
-  let chosenCity = getRandomCity();
-  console.log(`${chosenCity.city}, ${chosenCity.country}`)
-})
+export {getRandomCity}
