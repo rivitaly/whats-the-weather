@@ -13,16 +13,27 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div class="header">
-            <h1 id="wtw-title">What's the Weather</h1>
-            <a href="index.html">Home</a>
-            <a href="signin.html">Sign In</a>
-            <a href="signup.html">Sign Up</a>
+        <header>
+            <div class="logo">
+              <a href="index.html">
+                <h1 id="header-title">Whats the weather</h1>
+              </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a id="header-buttons" href="index.html">Home</a></li>
+                    <li><a id="header-buttons" href="signin.html">Sign In</a></li>
+                    <li><a id="header-buttons" href="signup.html">Sign Up</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="location-display">
+          <p id="location-title">City, Country</p>
         </div>
-        <p id="location-display">City, Country</p>
-        <div id="planet"></div>
+        <div id="planet"></div> 
         <button id="start-button">Start Guessing</button>
         <script type="module" src="js/main.js"></script>
         <script type="module" src="js/render.js"></script>
+      </div>
     </body>
 </html>
