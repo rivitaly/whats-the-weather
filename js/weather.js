@@ -1,5 +1,6 @@
-
 var api_key = "XXXXXXXXXXXXXXXXXXXXXXXXX" //this is Carter's key for the free version of OpenWeatherMapAPI
+
+var atmosphereTypes = ["Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Dust", "Ash", "Squall", "Tornado"];
 
 //Weather Class System 
 //Note: will need to adjust the class to follow the design models discussed in class
@@ -14,7 +15,8 @@ export class WeatherAPISystem {
     main = null;     //contains temp, feels_like, etc
 
     async init() {
-        await this.getCityData();
+        if(this.cities.length == 0) //Only want to set once
+            await this.getCityData();
         await this.getRandomCity();
         await this.setWeatherData();
     }
@@ -27,6 +29,10 @@ export class WeatherAPISystem {
             const data = await res.json();
             this.type = data.weather[0].main;
             this.main = data.main;
+            //If of Atmosphere type, set to Atmosphere
+            if (atmosphereTypes.includes(this.main)){
+                this.type = "Atmosphere";
+            }
         }
         catch {
             alert('Failed to get current weather');
