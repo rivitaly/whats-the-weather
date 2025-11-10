@@ -10,9 +10,9 @@
     <main id="signup-body">
         <div class="header">
             <h1 id="wtw-title">What's the Weather</h1>
-            <a href="index.html">Home</a>
-            <a href="signin.html">Sign In</a>
-            <a href="signup.html">Sign Up</a>
+            <a href="index.php">Home</a>
+            <a href="signin.php">Sign In</a>
+            <a href="signup.php">Sign Up</a>
         </div>
         <form action="" method="post" class="signup-fields" id="signup-form">
             <div class="input-field">
