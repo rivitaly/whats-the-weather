@@ -73,7 +73,42 @@ body {
     text-align: center;
 }
 
+/* Start of CSS Styles for Signup and Signin */
 
+#signin-body {
+    text-align: center;
+}
+
+#signup-body {
+    text-align: center;
+}
+
+.signin-fields {
+    margin-top: 50px;
+}
+
+.signup-fields {
+    margin-top: 50px;
+}
+
+.input-error {
+    border-color: red;
+}
+
+.error-text {
+    text-align: center;
+    padding: 5px;
+    margin-top: 2px;
+    text-decoration: underline;
+    color: red;
+    font-size: 0.8em;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+/* End of CSS Styles for Signup and Signin */
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
