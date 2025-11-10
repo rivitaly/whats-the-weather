@@ -1,4 +1,4 @@
-var api_key = "7d9a1a5b83e2342da9950131264a722c" //this is Carter's key for the free version of OpenWeatherMapAPI
+var api_key = "XXXXXXXXXX" //this is Carter's key for the free version of OpenWeatherMapAPI
 
 var atmosphereTypes = ["Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Dust", "Ash", "Squall", "Tornado"];
 
