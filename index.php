@@ -21,9 +21,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a id="header-buttons" href="index.html">Home</a></li>
-                    <li><a id="header-buttons" href="signin.html">Sign In</a></li>
-                    <li><a id="header-buttons" href="signup.html">Sign Up</a></li>
+                    <li><a id="header-buttons" href="index.php">Home</a></li>
+                    <li><a id="header-buttons" href="signin.php">Sign In</a></li>
+                    <li><a id="header-buttons" href="signup.php">Sign Up</a></li>
                 </ul>
             </nav>
         </header>
