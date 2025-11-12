@@ -32,6 +32,4 @@ function validateLogin(event) {
 
     if (flag === false)
         event.preventDefault();
-    //else
-        //console.log("validation successfull, sending data to the server");
 }

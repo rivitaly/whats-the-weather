@@ -50,6 +50,8 @@ function re_passwordHandler(event) {
     }
 }
 
+//might remove handler: mod key is env variable used in php
+//if removed: error message wont show and only way to know will be a account type variable in database
 function moderator_keyHandler(event) {
     var mod_key = event.target
     if (mod_key.value !== "some_mod_key") {

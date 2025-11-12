@@ -1,0 +1,15 @@
+CREATE TABLE accounts(
+        account_id INT NOT NULL AUTO_INCREMENT,
+        username VARCHAR(50),
+        password VARCHAR(50),
+        role VARCHAR(10),
+        PRIMARY KEY (account_id)
+    ); 
+
+CREATE TABLE leaderboards(
+        leaderboard_id INT NOT NULL AUTO_INCREMENT,
+        account_id INT,
+        correct_guess_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (leaderboard_id),
+        FOREIGN KEY (account_id) REFERENCES accounts(account_id)
+    );
