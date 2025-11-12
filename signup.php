@@ -61,6 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
         
         // insert account into database
         $result = $db->exec("INSERT INTO accounts (username, password, role) VALUES ('$username', '$password', '$role')");
+
+        header("Location: signin.php");
     } 
     
     //print if any errors 
