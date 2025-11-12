@@ -1,3 +1,78 @@
+<?php
+require_once("db.php");
+
+//removes special characters from user input
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data); //encodes
+    return $data;
+}
+
+$errors = array(); //array for errors
+
+//variables for input
+$username = "";
+$password = "";
+$moderator_key = "";
+$role = "";
+
+$REAL_MOD_KEY = getenv('MODERATOR_KEY'); //variable for testing moderator_key input
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
+
+    //cleans user input
+    $username = test_input($_POST["username"]); 
+    $password = test_input($_POST["password"]);
+    $moderator_key = test_input($_POST["moderator-key"]);
+    
+    $unameRegex = "/^[a-zA-Z0-9_]+$/"; //tester for username input
+
+    if (!preg_match($unameRegex, $username)) {//if username doesn't follow regex
+        $errors["username"] = "Invalid Username";
+    }
+    if ($password < 7) { // if password isn't long enough
+        $errors["password"] = "Invalid Password";
+    }
+
+    try { // data base connection
+        $db = new PDO($attr, $db_user, $db_pwd, $options);
+    } catch (PDOException $e) {
+        throw new PDOException($e->getMessage(), (int)$e->getCode());
+    }
+
+    // look for if the username already exists
+    $result = $db->query("SELECT username FROM accounts WHERE username='$username'");
+    $match = $result->fetch();
+
+    if ($match) {
+        $errors["Account Taken"] = "A user with that username already exists.";
+    }
+    
+    // if error free, decide if moderator key is correct
+    if (empty($errors)) {
+        if ($moderator_key == $REAL_MOD_KEY) {
+            $role = "Moderator";
+        }
+        else {
+            $role = "Player";
+        }
+        
+        // insert account into database
+        $result = $db->exec("INSERT INTO accounts (username, password, role) VALUES ('$username', '$password', '$role')");
+    } 
+    
+    //print if any errors 
+    if (!empty($errors)) {
+        foreach($errors as $type => $message) {
+            print("$type: $message \n<br />");
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
 
