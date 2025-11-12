@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
 
                 session_start(); 
 
-                $_SESSION["user_id"] = $row["user_id"];
+                $_SESSION["account_id"] = $row["account_id"];
                 $_SESSION["role"] = $row["role"];
                 
                 //send to index signed in
