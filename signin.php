@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
 
         try { // database connection
             $db = new PDO($attr, $db_user, $db_pwd, $options);
-            $result = $db->query("SELECT user_id, FROM accounts WHERE username = '$username' AND password = '$password'"); //look for account with similar username
+            $result = $db->query("SELECT user_id FROM accounts WHERE username = '$username' AND password = '$password'"); //look for account with similar username
 
             if (!$result) { //database fail
                 $errors["Database Error"] = "Could not retrieve user information";
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }
     } 
-    
+
     //print if any errors 
     if (!empty($errors)) {
         foreach($errors as $type => $message) {
