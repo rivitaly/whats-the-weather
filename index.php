@@ -2,9 +2,11 @@
 session_start();
 require_once("accountFactory.php");
 
-//if (!$_SESSION == "") //if session has started
-//Use below to create account from account factory
 /*
+if (!$_SESSION == "") //if session has started
+Use below to create account from account factory: 
+these values were assigned in signin 
+
 $_SESSION["account_id"] = $row["account_id"];
 $_SESSION["role"] = $row["role"];
 $_SESSION["username"] = $row["username"];
