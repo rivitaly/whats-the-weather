@@ -1,3 +1,21 @@
+<?php
+session_start();
+require_once("accountFactory.php");
+
+//if (!$_SESSION == "") //if session has started
+//Use below to create account from account factory
+/*
+$_SESSION["account_id"] = $row["account_id"];
+$_SESSION["role"] = $row["role"];
+$_SESSION["username"] = $row["username"];
+
+add or remove elements based on if logged in, swap login with logout and such
+panel will be added for leaderboard elements 
+
+need accountFactory as a php class because we need access to SESSION variables to create the account
+*/ 
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
