@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
             //print if any errors 
             if (!empty($errors)) {
                 foreach ($errors as $type => $message) {
-                    echo '<p class="messages">'.$type . ': ' . $message."\n</p";
+                    echo "<p class='messages'>{$type} : {$message}.</p>";
                 }
             }
             ?>
