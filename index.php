@@ -14,6 +14,9 @@ if (isset($_SESSION["account_id"])) {
   $account = AccountFactory::createAccount($_SESSION["account_id"], $_SESSION["username"], $_SESSION["role"]);
   
   $_SESSION["account"] = $account; //can use this acrosss php files so we can access the account
+
+  $welcome_message = ($account->username == "") ? "Welcome user\n" : "Welcome back: " . ".$account->username" . "\n";
+
 }
 
 ?>
@@ -49,6 +52,11 @@ if (isset($_SESSION["account_id"])) {
       </nav>
     </div>
   </header>
+  <div id="welcome-user">
+    <?php
+      ".$welcome_message"
+      ?>
+  </div>
   <div id="location-display">
     <p id="location-title">City, Country</p>
   </div>
