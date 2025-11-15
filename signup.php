@@ -85,40 +85,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
 
 <body>
     <main id="signup-body">
+      <header>
         <div class="header">
-            <h1 id="wtw-title">What's the Weather</h1>
-            <a href="index.php">Home</a>
-            <a href="signin.php">Sign In</a>
-            <a href="signup.php">Sign Up</a>
+          <a href="index.php">
+            <h1 id="header-title">What's the Weather</h1>
+          </a>
+            <nav>
+                <ul>
+                    <li><a id="header-buttons" href="index.php">Home</a></li>
+                    <li><a id="header-buttons" href="signin.php">Sign In</a></li>
+                    <li><a id="header-buttons" href="signup.php">Sign Up</a></li>
+                </ul>
+            </nav>
         </div>
-        <form action="" method="post" class="signup-fields" id="signup-form">
-            <div class="input-field">
-                <label>Username</label>
-                <input type="text" id="username" name="username"/>
-                <p id="error-text-username" class="error-text hidden">Invalid Username</p>
+      </header>
+
+
+        <section class="signup-in-card-container">
+            <div class="signup-in-card">
+                <h2 id="create-account-title">Create an Account</h2>
+                <form action="" method="post" class="signup-fields" id="signup-form">
+
+                    <div class="input-field">
+                        <label>Username</label>
+                        <input type="text" id="username" name="username"/>
+                        <p id="error-text-username" class="error-text hidden">Invalid Username</p>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Password</label>
+                        <input type="password" id="password" name="password"/>
+                        <p id="error-text-password" class="error-text hidden">Invalid Password, too short</p>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Re-enter Password</label>
+                        <input type="password" id="re-password" name="re-password"/>
+                        <p id="error-text-re-password" class="error-text hidden">Passwords do not match</p>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Moderator Key (Not Required)</label>
+                        <input type="password" id="moderator-key" name="moderator-key"/>
+                        <p id="error-text-moderator-key" class="error-text hidden">Incorrect Moderator Key</p>
+                    </div>
+
+                    <button type="submit" class="signup-in-button">Sign Up</button>
+                </form>
+                <p class="signup-note">Already have an account? <a href="signin.php">Sign in</a></p>
             </div>
-            <div class="input-field">
-                <label>Password</label>
-                <input type="password" id="password" name="password"/>
-                <p id="error-text-password" class="error-text hidden">Invalid Password, too short</p>
-            </div>
-            <div class="input-field">
-                <label>Re-enter Password</label>
-                <input type="password" id="re-password" name="re-password"/>
-                <p id="error-text-re-password" class="error-text hidden">Passwords do not match</p>
-            </div>
-            <div class="input-field">
-                <label>Moderator Key (Not Required)</label>
-                <input type="password" id="moderator-key" name="moderator-key"/>
-                <p id="error-text-moderator-key" class="error-text hidden">Incorrect Moderator Key</p>
-            </div>
-            <div>
-                <input type="submit" class="signup-form" value="Sign up" />
-            </div><br>
-        </form>
-        <div class="signup-note">
-            <p>Already have an account? <a href="signin.php">Sign in</a></p>
-        </div>
+        </section>
     </main>
     <script src="js/signupHandlers.js"></script>
 </body>
