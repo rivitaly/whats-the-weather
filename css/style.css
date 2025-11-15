@@ -1,24 +1,54 @@
+:root {
+  --background-colour: #13293dff;
+  --text-colour-hover: #D4D2D5;
+  --text-colour-outline: #F95738;
+  --celestial-blue: #1b98e0ff;
+  --celestial-light-blue: rgb(121, 206, 255);
+  --alice-blue: #e8f1f2ff;
+  --boxShadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
 body {
-    margin: 0px;
-    background: #191b20;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: var(--background-colour);
     color: white;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+/* Header Stuff */
 .header {
     background: #1a2e4b;
-    align-content: center;
-    border-radius: 0px 0px 30px 30px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: .5em 2em;
+    align-items: center;
+    padding: 1em 2em;
+    border-radius: 0 0 25px 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .header a, a:visited, a:hover, a:active, a:focus {
     color: white;
     text-decoration: none;
 }
+
+#header-title {
+    color: white;
+    font-size: 1.8em;
+    margin: 0;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+#header-title:hover {
+  text-shadow: 0 0 10px var(--text-colour-outline);
+}
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+}
+/* End of Header Stuff */
+
+
 
 .weather-button {
     background-color: transparent;
@@ -39,10 +69,31 @@ body {
     border: 2px solid #CC0000;
 }
 
-#header-buttons {
-    display: flex;
-    gap: 1em;
+
+/* Nav */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5em;
 }
+
+nav ul li a {
+
+  font-size: 1.1em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--text-colour-hover);
+  text-shadow: 0 0 12px var(--text-colour-outline);
+}
+/* End of Nav */
+
+
 
 #location-display {
     text-align: center;
@@ -69,9 +120,7 @@ body {
     color: black;
 }
 
-#header-title {
-    text-align: center;
-}
+
 
 /* Start of CSS Styles for Signup and Signin */
 
@@ -79,16 +128,69 @@ body {
     text-align: center;
 }
 
-#signup-body {
-    text-align: center;
-}
-
 .signin-fields {
     margin-top: 50px;
 }
 
-.signup-fields {
-    margin-top: 50px;
+/* Sign Up Stuff */
+#create-account-title {
+    font-size: 2em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    color: black;
+}
+
+.signup-in-card-container {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+  margin-top: 2em;
+}
+
+.signup-in-card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 2.5em;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: var(--boxShadow);
+  text-align: center;
+}
+
+.signup-card h2 {
+  color: var(--prussian-blue);
+  margin-bottom: 1.5em;
+}
+/* End of Sign Up Stuff */
+
+/* INPUT FIELDS */
+.input-field {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+.input-field label {
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  display: block;
+  color: black;
+  letter-spacing: 1px;
+}
+
+.input-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.8em;
+  border-radius: 10px;
+  border: 2px solid #d3d3d3;
+  background-color: var(--alice-blue);
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field input:focus {
+  border-color: var(--celestial-blue);
+  box-shadow: 0 0 8px var(--celestial-light-blue);
 }
 
 .input-error {
@@ -103,6 +205,42 @@ body {
     color: red;
     font-size: 0.8em;
 }
+
+
+/* BUTTON */
+.signup-in-button {
+  width: 100%;
+  padding: 0.9em;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--celestial-blue);
+  color: white;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1.5em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.signup-in-button:hover {
+  background-color: var(--celestial-light-blue);
+  transform: translateY(-3px);
+}
+
+.signup-note {
+  margin-top: 1.5em;
+}
+
+.signup-note a {
+  color: var(--cerulean);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-note a:hover {
+  text-shadow: 0 0 10px var(--celestial-blue);
+}
+
 
 .hidden{
     visibility: hidden;

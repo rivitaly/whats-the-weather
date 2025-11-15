@@ -13,12 +13,11 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <header>
-            <div class="logo">
-              <a href="index.php">
-                <h1 id="header-title">Whats the weather</h1>
-              </a>
-            </div>
+      <header>
+        <div class="header">
+          <a href="index.php">
+            <h1 id="header-title">What's the Weather</h1>
+          </a>
             <nav>
                 <ul>
                     <li><a id="header-buttons" href="index.php">Home</a></li>
@@ -26,7 +25,8 @@
                     <li><a id="header-buttons" href="signup.php">Sign Up</a></li>
                 </ul>
             </nav>
-        </header>
+        </div>
+      </header>
         <div id="location-display">
           <p id="location-title">City, Country</p>
         </div>
