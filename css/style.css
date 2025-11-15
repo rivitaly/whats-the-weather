@@ -234,6 +234,7 @@ nav ul li a:hover {
 
 .signup-note {
   margin-top: 1.5em;
+  color: black;
 }
 
 .signup-note a {
@@ -243,7 +244,14 @@ nav ul li a:hover {
 }
 
 .signin-note {
+  margin-top: 1.5em;
+  color: black;
+}
+
+.signin-note a {
   color: var(--cerulean);
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .signup-note a:hover {

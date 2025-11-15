@@ -100,9 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
                         <button type="submit" class="signup-in-button">Sign in</button>
                     </div><br>
                 </form>
-                <div class="signin-note">
-                    <p>Don't have an account? <a href="signup.php">Sign up</a></p>
-                </div>
+                <p class="signin-note">Don't have an account? <a href="signup.php">Sign up</a></p>
                 <div>
                     <?php
                     //print if any errors 
