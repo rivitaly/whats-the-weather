@@ -125,16 +125,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
                     <button type="submit" class="signup-in-button">Sign Up</button>
                 </form>
                 <p class="signup-note">Already have an account? <a href="signin.php">Sign in</a></p>
-            </div>
-            <div>
-                <?php
-                //print if any errors while logging in
-                if (!empty($errors)) {
-                    foreach ($errors as $type => $message) {
-                        echo "<p class='messages'>{$type} : {$message}</p>";
+                <div>
+                    <?php
+                    //print if any errors while logging in
+                    if (!empty($errors)) {
+                        foreach ($errors as $type => $message) {
+                            echo "<p class='messages'>{$type} : {$message}</p>";
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </div>
             </div>
         </section>
     </main>
