@@ -1,5 +1,3 @@
-var api_key = "XXXXXXXXXX" //this is Carter's key for the free version of OpenWeatherMapAPI
-
 var atmosphereTypes = ["Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Dust", "Ash", "Squall", "Tornado"];
 
 //Weather Class System 
@@ -13,6 +11,7 @@ export class WeatherAPISystem {
     long = null;
     lat = null;
     main = null;     //contains temp, feels_like, etc
+    api_key = null;
 
     async init() {
         if(this.cities.length == 0) //Only want to set once
@@ -23,7 +22,7 @@ export class WeatherAPISystem {
 
     //Sends a fetch to return the weather data from OpenWeatherAPI
     async setWeatherData(long, lat) {
-        let Forecast_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${api_key}`;
+        let Forecast_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.api_key}`;
         try {
             const res = await fetch(Forecast_URL);
             const data = await res.json();
@@ -58,6 +57,13 @@ export class WeatherAPISystem {
         this.country = countryFormatter.of(this.countryCode)
         this.long = cityName.coord.lon;
         this.lat = cityName.coord.lat;
+    }
+
+    async setWeatherAPIKey($n_api_key)
+    {
+        this.api_key = $n_api_key;
+        // will need to fetch api key from a php file, since we are doing everything in js there is no way to hide the api_key outright
+        // only way to officially hide it is if we did all the api calls in a php file. 
     }
 
 }

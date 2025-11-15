@@ -206,6 +206,10 @@ nav ul li a:hover {
     font-size: 0.8em;
 }
 
+.messages {
+    color: black;
+}
+
 
 /* BUTTON */
 .signup-in-button {

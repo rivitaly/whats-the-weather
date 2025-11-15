@@ -2,7 +2,6 @@ import Weather from './weather.js'
 
 //Variables
 let matchStarted = false, guessed = false;
-let city, country, long, lat = null;
 const weather = new Weather();
 
 //Elements

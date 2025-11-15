@@ -1,28 +1,29 @@
 <?php
 session_start();
 require_once("accountFactory.php");
+require_once("db.php");
 
-/*
-if (!$_SESSION == "") //if session has started
-Use below to create account from account factory: 
-these values were assigned in signin 
+if (isset($_SESSION["account_id"])) {
+  
+  try { // data base connection
+    $db = new PDO($attr, $db_user, $db_pwd, $options);
+  } catch (PDOException $e) {
+    throw new PDOException($e->getMessage(), (int) $e->getCode());
+  }
 
-$_SESSION["account_id"] = $row["account_id"];
-$_SESSION["role"] = $row["role"];
-$_SESSION["username"] = $row["username"];
+  $account = AccountFactory::createAccount($db, $_SESSION["account_id"], $_SESSION["username"], $_SESSION["role"]);
+  
+  $_SESSION["account"] = $account; //can use this acrosss php files so we can access the account
+}
 
-add or remove elements based on if logged in, swap login with logout and such
-panel will be added for leaderboard elements 
-
-need accountFactory as a php class because we need access to SESSION variables to create the account
-*/ 
 ?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>What's the Weather</title>
-        <script type="importmap">
+
+<head>
+  <title>What's the Weather</title>
+  <script type="importmap">
             {
                 "imports": {
                     "three": "https://cdn.jsdelivr.net/npm/three@v0.180.0/build/three.module.js",
@@ -30,39 +31,41 @@ need accountFactory as a php class because we need access to SESSION variables t
                 }
             }
         </script>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-      <header>
-        <div class="header">
-          <a href="index.php">
-            <h1 id="header-title">What's the Weather</h1>
-          </a>
-            <nav>
-                <ul>
-                    <li><a id="header-buttons" href="index.php">Home</a></li>
-                    <li><a id="header-buttons" href="signin.php">Sign In</a></li>
-                    <li><a id="header-buttons" href="signup.php">Sign Up</a></li>
-                </ul>
-            </nav>
-        </div>
-      </header>
-        <div id="location-display">
-          <p id="location-title">City, Country</p>
-        </div>
-        <div id="planet"></div> 
-        <button id="main-button">Start Guessing</button>
-        <div id="weather-button-container" style="visibility: hidden">
-            <button class="weather-button" id="Thunderstorm">Thunderstorm</button>
-            <button class="weather-button" id="Drizzle">Drizzle</button>
-            <button class="weather-button" id="Rain">Rain</button>
-            <button class="weather-button" id="Snow">Snow</button>
-            <button class="weather-button" id="Atmosphere">Atmosphere</button>
-            <button class="weather-button" id="Clear">Clear</button>
-            <button class="weather-button" id="Clouds">Clouds</button>
-        </div>
-        <script type="module" src="js/main.js"></script>
-        <script type="module" src="js/render.js"></script>
-      </div>
-    </body>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="header">
+      <a href="index.php">
+        <h1 id="header-title">What's the Weather</h1>
+      </a>
+      <nav>
+        <ul>
+          <li><a id="header-buttons" href="index.php">Home</a></li>
+          <li><a id="header-buttons" href="signin.php">Sign In</a></li>
+          <li><a id="header-buttons" href="signup.php">Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div id="location-display">
+    <p id="location-title">City, Country</p>
+  </div>
+  <div id="planet"></div>
+  <button id="main-button">Start Guessing</button>
+  <div id="weather-button-container" style="visibility: hidden">
+    <button class="weather-button" id="Thunderstorm">Thunderstorm</button>
+    <button class="weather-button" id="Drizzle">Drizzle</button>
+    <button class="weather-button" id="Rain">Rain</button>
+    <button class="weather-button" id="Snow">Snow</button>
+    <button class="weather-button" id="Atmosphere">Atmosphere</button>
+    <button class="weather-button" id="Clear">Clear</button>
+    <button class="weather-button" id="Clouds">Clouds</button>
+  </div>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/render.js"></script>
+  </div>
+</body>
+
 </html>
