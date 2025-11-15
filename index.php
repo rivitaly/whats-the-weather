@@ -15,7 +15,7 @@ if (isset($_SESSION["account_id"])) {
   
   $_SESSION["account"] = $account; //can use this acrosss php files so we can access the account
 
-  $welcome_message = ($account->username == "") ? "Welcome user\n" : "Welcome back: " . ".$account->username" . "\n";
+  $welcome_message = ($account->username == "") ? "Welcome user\n" : "Welcome back: {$account->username}\n";
 
 }
 
@@ -53,7 +53,7 @@ if (isset($_SESSION["account_id"])) {
     </div>
   </header>
   <div id="welcome-user">
-    <?php echo ".$welcome_message"?>
+    <?php echo $welcome_message?>
   </div>
   <div id="location-display">
     <p id="location-title">City, Country</p>
