@@ -2,6 +2,5 @@
 require_once("db.php");
 session_start();
 
-// session {account} has account variables  
 
 ?>
