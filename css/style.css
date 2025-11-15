@@ -258,6 +258,10 @@ nav ul li a:hover {
   text-shadow: 0 0 10px var(--celestial-blue);
 }
 
+.signin-note a:hover {
+  text-shadow: 0 0 10px var(--celestial-blue);
+}
+
 
 .hidden{
     visibility: hidden;
