@@ -67,52 +67,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
 
 <body>
     <main id="signin-body">
-      <header>
-        <div class="header">
-          <a href="index.php">
-            <h1 id="header-title">What's the Weather</h1>
-          </a>
-            <nav>
-                <ul>
-                    <li><a id="header-buttons" href="index.php">Home</a></li>
-                    <li><a id="header-buttons" href="signin.php">Sign In</a></li>
-                    <li><a id="header-buttons" href="signup.php">Sign Up</a></li>
-                </ul>
-            </nav>
-        </div>
-      </header>
+        <header>
+            <div class="header">
+                <a href="index.php">
+                    <h1 id="header-title">What's the Weather</h1>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a id="header-buttons" href="index.php">Home</a></li>
+                        <li><a id="header-buttons" href="signin.php">Sign In</a></li>
+                        <li><a id="header-buttons" href="signup.php">Sign Up</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-      <section class="signup-in-card-container">
-          <div class="signup-in-card">
-              <h2 id="create-account-title">Sign In to Your Account</h2>
-              <form action="" method="post" class="signin-fields" id="signin-form">
-                  <div class="input-field">
-                    <label>Username</label>
-                    <input type="text" id="username" name="username" />
-                    <p id="error-text-username" class="error-text hidden">Username is invalid</p>
-                  </div>
-                  <div class="input-field">
-                    <label>Password</label>
-                    <input type="password" id="password" name="password" />
-                    <p id="error-text-password" class="error-text hidden">Password is invalid, too short</p>
-                  </div>
-                  <div>
-                    <button type="submit" class="signup-in-button">Sign in</button>
-                  </div><br>
-              </form>
-            <div class="signin-note">
-            <p>Don't have an account? <a href="signup.php">Sign up</a></p>
-        </div>
-        <div>
-            <?php
-            //print if any errors 
-            if (!empty($errors)) {
-                foreach ($errors as $type => $message) {
-                    echo "<p class='messages'>{$type} : {$message}.</p>";
-                }
-            }
-            ?>
-        </div>
+        <section class="signup-in-card-container">
+            <div class="signup-in-card">
+                <h2 id="create-account-title">Sign In to Your Account</h2>
+                <form action="" method="post" class="signin-fields" id="signin-form">
+                    <div class="input-field">
+                        <label>Username</label>
+                        <input type="text" id="username" name="username" />
+                        <p id="error-text-username" class="error-text hidden">Username is invalid</p>
+                    </div>
+                    <div class="input-field">
+                        <label>Password</label>
+                        <input type="password" id="password" name="password" />
+                        <p id="error-text-password" class="error-text hidden">Password is invalid, too short</p>
+                    </div>
+                    <div>
+                        <button type="submit" class="signup-in-button">Sign in</button>
+                    </div><br>
+                </form>
+                <div class="signin-note">
+                    <p>Don't have an account? <a href="signup.php">Sign up</a></p>
+                </div>
+                <div>
+                    <?php
+                    //print if any errors 
+                    if (!empty($errors)) {
+                        foreach ($errors as $type => $message) {
+                            echo "<p class='messages'>{$type} : {$message}</p>";
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </section>
     </main>
     <script src="js/signinHandlers.js"></script>
 </body>
