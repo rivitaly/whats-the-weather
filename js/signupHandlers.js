@@ -1,12 +1,10 @@
 var username = document.getElementById("username");
 var password = document.getElementById("password");
 var re_password = document.getElementById("re-password");
-var moderator_key = document.getElementById("moderator-key");
 
 username.addEventListener("blur", usernameHandler);
 password.addEventListener("blur", passwordHandler);
 re_password.addEventListener("blur", re_passwordHandler);
-moderator_key.addEventListener("blur", moderator_keyHandler);
 
 function validateUsername(v_username) {
     var unameRegEx = /^[a-zA-Z0-9_]+$/;

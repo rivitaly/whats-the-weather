@@ -29,11 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
     
     $unameRegex = "/^[a-zA-Z0-9_]+$/"; //tester for username input
 
-    if (!preg_match($unameRegex, $username)) {//if username doesn't follow regex
-        $errors["username"] = "Invalid Username";
-    }
-    if ($password < 7) { // if password isn't long enough
-        $errors["password"] = "Invalid Password";
+    if (!preg_match($unameRegex, $username) || $password < 7) { //if user input doesn't follow regex or invalid password
+        $errors["user-or-pass"] = "Invalid username or password";
+        $dataOK = FALSE;
     }
 
     try { // data base connection
@@ -65,12 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
         header("Location: signin.php");
     } 
     
-    //print if any errors 
-    if (!empty($errors)) {
-        foreach($errors as $type => $message) {
-            print("$type: $message \n<br />");
-        }
-    }
 }
 ?>
 
@@ -135,6 +127,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
                 <p class="signup-note">Already have an account? <a href="signin.php">Sign in</a></p>
             </div>
         </section>
+        <div>
+        <?php
+        //print if any errors while logging in
+        if (!empty($errors)) {
+            foreach($errors as $type => $message) {
+                print("$type: $message \n<br />");
+            }
+        }
+        ?>
+        </div>
     </main>
     <script src="js/signupHandlers.js"></script>
 </body>
