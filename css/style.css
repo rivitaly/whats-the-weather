@@ -6,6 +6,7 @@
   --celestial-light-blue: rgb(121, 206, 255);
   --alice-blue: #e8f1f2ff;
   --boxShadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --cerulean: #007BA7;
 }
 body {
     margin: 0;
@@ -239,11 +240,10 @@ nav ul li a:hover {
   color: var(--cerulean);
   font-weight: 600;
   text-decoration: none;
-  color: black;
 }
 
 .signin-note {
-  color: black;
+  color: var(--cerulean);
 }
 
 .signup-note a:hover {
