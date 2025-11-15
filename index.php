@@ -53,7 +53,7 @@ if (isset($_SESSION["account_id"])) {
     </div>
   </header>
   <div id="welcome-user">
-    <?php echo $welcome_message?>
+    <?php echo "<p class='welcome-message'>{$welcome_message}</p>"?>
   </div>
   <div id="location-display">
     <p id="location-title">City, Country</p>
