@@ -132,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
         //print if any errors while logging in
         if (!empty($errors)) {
             foreach($errors as $type => $message) {
-                echo '<p class="messages">'.$type . ':' . $message."\n</p";
+                echo '<p class="messages">'.$type . ': ' . $message."\n</p";
             }
         }
         ?>
