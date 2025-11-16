@@ -79,7 +79,7 @@ export function rotatePlanet(long, lat){
 
     //Get target rotation
     targetRot.x = THREE.MathUtils.degToRad(-long);
-    targetRot.y = THREE.MathUtils.degToRad(lat);
+    targetRot.y = THREE.MathUtils.degToRad(1 + lat);
 
     rotStart = performance.now();
     isRotating = true;
