@@ -53,6 +53,7 @@ mainButton.addEventListener('click', async () => {
   mainButton.style.visibility = "hidden";
   weatherButtons.style.visibility = "visible";
   mainButton.innerHTML = "Next Round";
+  locationDisplay.classList.remove("location-title-hide");
 })
 
 document.querySelectorAll(".weather-button").forEach(button => {
