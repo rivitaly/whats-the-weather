@@ -100,7 +100,7 @@ else
   <div id="main-button-container">
     <button id="main-button">Start Guessing</button>
   </div>
-  <div id="weather-button-container" style="visibility: visible">
+  <div id="weather-button-container" style="visibility: hidden">
     <div>
       <button class="weather-button" id="Thunderstorm"><img src="assets/weather-icons/thunderstorm.png"></button>
       <button class="weather-button" id="Drizzle"><img src="assets/weather-icons/drizzle.png"></button>
