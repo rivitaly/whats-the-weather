@@ -15,7 +15,7 @@ if (isset($_SESSION["account_id"])) {
   
   $_SESSION["account"] = $account; //can use this acrosss php files so we can access the account
 
-  $welcome_message = ($account->username == "") ? "Welcome user\n" : "Welcome back, {$account->username}\n";
+  $welcome_message = ($account->display_name == "") ? "Welcome user\n" : "Welcome back, {$account->display_name}\n";
 
 }
 else
