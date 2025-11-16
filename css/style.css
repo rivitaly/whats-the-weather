@@ -166,6 +166,7 @@ body {
 
 
 #location-display {
+    display: grid;
     text-align: center;
     margin-top: 5px;
     margin-bottom: 0px;
@@ -191,63 +192,77 @@ body {
 }
 
 
+#main-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 10px;
+  transition: grid-template-columns 0.5s ease, grid-template-rows 0.5s ease, gap 0.5s ease;
+  justify-items: center;
+}
 
-#main-panel{
-  display:flex;
-  position: relative;
+.ghost-box {
+  width: 100%;
+  height: 1px;
+  visibility: hidden;
+  transition: all 0.5s ease;
 }
 
 #planet {
-  width: 100%;
   height: 450px;
+  width: 450px;
+  background-size: cover;
+  background-position: center;
+  transition: height 0.5s ease;
 }
 
-#leaderboard{
-  position: absolute;
-  right: 10px;
-  width: 300px;
-  margin: 10px;
+#leaderboard {
+  width: 320px;
+  max-width: 100%;
+  background-color: #0f1f33;
+  border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: width 0.5s ease;
+
 }
 
-#leaderboard-title{
+#leaderboard-title {
   background-color: var(--header-background);
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 0 0;
   text-align: center;
   font-size: 30px;
-  padding: 5px;
-  margin: 0px;
+  padding: 10px;
+  margin: 0;
 }
 
 #leaderboard-options {
   display: flex;
 }
 
-#leaderboard-options button{
+#leaderboard-options button {
   background-color: #1a2e4b;
   border: 2px solid #13293dff;
   color: white;
   flex: 1;
   transition: all 0.25s ease;
-  font-size: 24px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  padding: 5px 0px;
-
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 8px 0;
 }
 
 #leaderboard-options button:hover{
   background-color: #1f4072;
 }
 
-#leaderboard-table{
+#leaderboard-table {
   width: 100%;
-  text-align: left;
-  border: 0px;
-  border-spacing: 0px;
-  border-radius: 0px 0px 10px 10px;
+  border-spacing: 0;
+  border-radius: 0 0 10px 10px;
 }
+
 #leaderboard-table th, td{
   padding: 10px;
+  text-align: left;
 }
 
 #leaderboard-table tr:nth-child(odd){
@@ -402,10 +417,10 @@ body {
 }
 
 #main-button-container{
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
-  padding-top: 5px;
+  padding-top: 15px;
 }
 
 #main-button {
@@ -470,11 +485,62 @@ body {
 
 
 /* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  #main-panel {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto; 
+    gap: 15px;
+    justify-items: center;
+  }
 
- .content-container {
-        width: 50%;
-    }
 
+  .ghost-box {
+    grid-row: 1;
+    height: 1px;
+  }
 
+  #leaderboard {
+    grid-row: 2;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  #location-display {
+    grid-row: 3;
+    width: 100%;
+  }
+
+  #planet {
+    grid-row: 4;
+    height: 300px;
+  }
+
+  #location-title {
+    font-size: 32px;
+  }
+}
+
+/* Smaller phones */
+@media (max-width: 600px) {
+  #planet {
+    height: 220px;
+  }
+
+  #leaderboard-title {
+    font-size: 24px;
+  }
+
+  #leaderboard-options button {
+    font-size: 16px;
+  }
+
+  #leaderboard-table th,
+  #leaderboard-table td {
+    font-size: 16px;
+  }
+
+  .weather-button {
+    width: 65px;
+    height: 65px;
+  }
 }

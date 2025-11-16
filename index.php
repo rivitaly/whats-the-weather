@@ -30,6 +30,7 @@ else
 
 <head>
   <title>What's the Weather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="importmap">
             {
                 "imports": {
@@ -86,7 +87,8 @@ else
   <div id="location-display">
     <p id="location-title" class="location-title-hide">City, Country</p>
   </div>
-  <div id="main-panel">
+  <div id="main-panel" class="main-layout">
+    <div class="ghost-box"></div>
     <div id="planet"></div>
     <div id="leaderboard">
       <p id="leaderboard-title">Leaderboard</p>
