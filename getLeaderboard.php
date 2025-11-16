@@ -1,6 +1,8 @@
 <?php
 header('Content-Type: application/json');
 
+require_once 'db.php';
+
   try { // data base connection
     $db = new PDO($attr, $db_user, $db_pwd, $options);
   } catch (PDOException $e) {
