@@ -49,7 +49,12 @@ body {
 }
 /* End of Header Stuff */
 
-
+#weather-button-container{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .weather-button {
     background-color: transparent;
@@ -58,6 +63,9 @@ body {
     border-radius: 500px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     transition: all 0.25s ease;
+    width: 85px;
+    height: 85px;
+    margin: 5px;
 }
 
 .weather-button.correct {
@@ -105,6 +113,13 @@ nav ul li a:hover {
 #location-title {
     text-align: center;
     font-size: 400%;
+    margin: 0px;
+}
+
+#main-button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #main-button {
@@ -113,15 +128,78 @@ nav ul li a:hover {
     border: 2px solid white;
     border-radius: 500px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    padding: 16px;
     transition: all 0.25s ease;
+    margin-bottom: 5px;
 }
 
-#start-button:hover {
+#main-button:hover {
     background-color: white;
     color: black;
 }
 
+#main-panel{
+  display:flex;
+  position: relative;
+}
 
+#planet {
+  width: 100%;
+  height: 450px;
+}
+
+#leaderboard{
+  position: absolute;
+  right: 10px;
+  width: 300px;
+  padding: 10px;
+}
+
+#leaderboard-title{
+  background-color: #1f4072;
+  text-align: center;
+  font-size: 30px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#leaderboard-options {
+  display: flex;
+}
+
+#leaderboard-options button{
+  background-color: #1a2e4b;
+  border: 2px solid #13293dff;
+  color: white;
+  flex: 1;
+  transition: all 0.25s ease;
+  font-size: 24px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#leaderboard-options button:hover{
+  background-color: #1f4072;
+}
+
+#leaderboard-table{
+  width: 100%;
+  text-align: left;
+  border: 0px;
+  border-spacing: 0px;
+}
+
+#leaderboard-table tr:nth-child(odd){
+  background-color: rgb(18, 38, 57);
+}
+
+#leaderboard-table tr:nth-child(even){
+  background-color: #13293dff;
+}
+
+.leaderboard-value{
+  text-align: right;
+}
 
 /* Start of CSS Styles for Signup and Signin */
 
