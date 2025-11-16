@@ -15,7 +15,7 @@ function correct(button){
   button.classList.add("correct")
 
   //Database Update
-  fetch("../insertGuessScript.php", {method: "POST"})
+  fetch("./insertGuessScript.php", {method: "POST"})
 }
 
 function incorrect(button, correctButton){
