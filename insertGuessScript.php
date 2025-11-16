@@ -3,7 +3,6 @@ require_once("db.php");
 require_once("accountFactory.php");
 
 session_start();
-echo ("hello");
 
 if (isset($_SESSION["account"]))
 {
@@ -14,10 +13,10 @@ try { // data base connection
     }
 
     $n_account_id = $_SESSION['account']->id;
-    $n_account_username = $_SESSION['account']->username;
+    $n_account_display_name = $_SESSION['account']->display_name;
 
     // Insert correct guess into leaderboards
-    $db->exec("INSERT INTO leaderboards (account_id, correct_guess_data, username) VALUES ('$n_account_id', NOW(), '$n_account_username')");
+    $db->exec("INSERT INTO leaderboards (account_id, correct_guess_data, username) VALUES ('$n_account_id', NOW(), '$n_account_display_name')");
 
     $db = null;
 }
