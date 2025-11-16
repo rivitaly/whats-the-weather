@@ -59,7 +59,7 @@ mainButton.addEventListener('click', async () => {
 })
 
 function updateLeaderboard(type) {
-    fetch(`get_leaderboard.php?type=${type}`)
+    fetch(`getLeaderboard.php?type=${type}`)
         .then(response => response.json())
         .then(data => {
             // Clear existing rows except header
