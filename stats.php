@@ -43,6 +43,25 @@ if(!isset($_SESSION["account"])){
       </nav>
     </div>
   </header>
+  <p id="stats-name-display">Here's your stats, <?= $_SESSION["display_name"] ?></p>
+  <div id="stats-container">
+    <!--Access Display Name-->
+    <table id="stats-table">
+      <tr>
+        <th>Daily</th>
+        <th>Weekly</th>
+        <th>Monthly</th>
+        <th>All Time</th>
+      </tr>
+      <tr>
+        <!--Access User's Score Count-->
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+  </div>
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/render.js"></script>
   </div>
