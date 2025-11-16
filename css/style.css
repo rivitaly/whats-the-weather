@@ -55,6 +55,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 25px;
 }
 
 
@@ -374,6 +375,15 @@ nav ul li a:hover {
     width: 85px;
     height: 85px;
     margin: 5px;
+}
+.weather-button:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.weather-button:hover img{
+  filter: invert(1);
 }
 
 .weather-button img{
