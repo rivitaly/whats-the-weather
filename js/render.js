@@ -9,6 +9,12 @@ const scale = 0.1;
 const lightColor = 0xffffff;
 const rotSpeedY = 0.001;
 const distance = 60;
+let isPlaying = false;
+let currRot = new THREE.Vector2(0,0);
+let targetRot = new THREE.Vector2(0,0);
+let rotTime = 1000; //in ms
+let rotStart = 0;
+let isRotating =  false;
 
 //Where you want the render to be placed
 var container = document.getElementById("planet")
@@ -64,18 +70,49 @@ scene.add(topLight);
 const ambientLight = new THREE.AmbientLight(lightColor, 1);
 scene.add(ambientLight);
 
+export function rotatePlanet(long, lat){
+    if(!isPlaying) { isPlaying = true; }
+
+    //Get current rotation
+    currRot.x = object.rotation.x;
+    currRot.y = object.rotation.y;
+
+    //Get target rotation
+    targetRot.x = THREE.MathUtils.degToRad(-long);
+    targetRot.y = THREE.MathUtils.degToRad(lat);
+
+    rotStart = performance.now();
+    isRotating = true;
+}
+
+function cubicEaseOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+function animateRotation(){
+    if(!isRotating) { return; }
+
+    const now = performance.now();
+    const diff = now - rotStart;
+    const currTime = Math.min(diff / rotTime, 1);
+    const ease = cubicEaseOut(currTime);
+
+    object.rotation.x = THREE.MathUtils.lerp(currRot.x, targetRot.x, ease);
+    object.rotation.y = THREE.MathUtils.lerp(currRot.y, targetRot.y, ease);
+
+    //Only rotate for the duration needed
+    if(currTime >= 1) { isRotating = false; }
+}
+
 //Render
 function animate() {
 
     //Only perform operations when object is loaded
-    if(object){
-        object.rotation.y += rotSpeedY;
-        /*
-            Instead of rotating like this, I think it'd be good to connect whatever Weather API we use
-            to calculate longitude and latitude and make use of a function call to rotate the earth to
-            face towards the user at the correct location to be used.  Think it'd be worth looking into
-            figuring out different easing styles rather than linear interpolation? (Ease Out - Quint?)
-         */
+    if(!isPlaying){
+        if(object)
+            object.rotation.y += rotSpeedY;
+    }
+    else {
+        if(isRotating)
+            animateRotation();
     }
 
     renderer.render(scene, camera);
