@@ -28,11 +28,13 @@ if(!isset($_SESSION["account"])){
           <li><a href="index.php">Home</a></li>
           <?php
             if (isset($_SESSION["account"])){
+              if (isset($_SESSION["role"] && $_SESSION["role"] === "Moderator")){
+                echo '<li><a href="mod.php">Mod Panel</a></li>';
+              }
+              echo '<li><a href="stats.php">Player Stats</a></li>';
               echo '<li><a id="logout" href="logout.php">Log Out</a></li>';
             }
-          ?>
-          <?php
-            if (!isset($_SESSION["account"])){
+            else{
               echo '<li><a href="signin.php">Sign In</a></li>';
               echo '<li><a href="signup.php">Sign Up</a></li>';
             }
