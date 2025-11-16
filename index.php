@@ -118,15 +118,15 @@ else
   </div>
   <div id="weather-button-container" style="visibility: hidden">
     <div>
-      <button class="weather-button" id="Thunderstorm"><img src="assets/weather-icons/thunderstorm.png"></button>
-      <button class="weather-button" id="Drizzle"><img src="assets/weather-icons/drizzle.png"></button>
-      <button class="weather-button" id="Rain"><img src="assets/weather-icons/rain.png"></button>
-      <button class="weather-button" id="Snow"><img src="assets/weather-icons/snow.png"></button>
+      <button title="Thunderstorm" class="weather-button" id="Thunderstorm"><img src="assets/weather-icons/thunderstorm.png"></button>
+      <button title="Drizzle" class="weather-button" id="Drizzle"><img src="assets/weather-icons/drizzle.png"></button>
+      <button title="Rain" class="weather-button" id="Rain"><img src="assets/weather-icons/rain.png"></button>
+      <button title="Snow" class="weather-button" id="Snow"><img src="assets/weather-icons/snow.png"></button>
     </div>
     <div>
-      <button class="weather-button" id="Atmosphere"><img src="assets/weather-icons/atmosphere.png"></button>
-      <button class="weather-button" id="Clear"><img src="assets/weather-icons/clear.png"></button>
-      <button class="weather-button" id="Clouds"><img src="assets/weather-icons/clouds.png"></button>
+      <button title="Windy" class="weather-button" id="Atmosphere"><img src="assets/weather-icons/atmosphere.png"></button>
+      <button title="Clear" class="weather-button" id="Clear"><img src="assets/weather-icons/clear.png"></button>
+      <button title="Cloudy" class="weather-button" id="Clouds"><img src="assets/weather-icons/clouds.png"></button>
     </div>
   </div>
   <script type="module" src="js/main.js"></script>
