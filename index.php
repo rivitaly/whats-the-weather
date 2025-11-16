@@ -45,9 +45,14 @@ if (isset($_SESSION["account_id"])) {
       </a>
       <nav>
         <ul>
-          <li><a id="header-buttons" href="index.php">Home</a></li>
-          <li><a id="header-buttons" href="signin.php">Sign In</a></li>
-          <li><a id="header-buttons" href="signup.php">Sign Up</a></li>
+          <?php
+            if (isset($_SESSION["account_id"])){
+              <li><a id="logout" href="logout.php">Log Out</a></li>
+            }
+          ?>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="signin.php">Sign In</a></li>
+          <li><a href="signup.php">Sign Up</a></li>
         </ul>
       </nav>
     </div>
