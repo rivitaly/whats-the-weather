@@ -57,8 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
             $role = "Player";
         }
 
+        $lower_username = strtolower($username);
         // insert account into database
-        $result = $db->exec("INSERT INTO accounts (username, password, role) VALUES ('$username', '$password', '$role')");
+        $result = $db->exec("INSERT INTO accounts (username, password, role, display_name) VALUES ('$lower_username', '$password', '$role', $username)");
 
         $db = null;
 

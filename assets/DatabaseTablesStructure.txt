@@ -1,7 +1,7 @@
 CREATE TABLE accounts(
         account_id INT NOT NULL AUTO_INCREMENT,
         display_name VARCHAR(50),
-        username VARCHAR(50,)
+        username VARCHAR(50),
         password VARCHAR(50),
         role VARCHAR(10),
         banned BOOLEAN NOT NULL DEFAULT FALSE,
