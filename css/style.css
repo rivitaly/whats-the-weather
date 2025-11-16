@@ -74,17 +74,33 @@ body {
 }
 
 .weather-button.correct {
-  /*color: #00DD00;
-  border: 2px solid #00DD00;*/
-  filter: invert(63%) sepia(53%) saturate(6933%) hue-rotate(88deg) brightness(116%) contrast(114%);
+  color: #00DD00;
+  border: 2px solid #00DD00;
 }
 
 .weather-button.incorrect {
-  /*color: #CC0000;
-  border: 2px solid #CC0000;*/
-  filter: invert(12%) sepia(68%) saturate(5451%) hue-rotate(355deg) brightness(100%) contrast(119%);
+  color: #CC0000;
+  border: 2px solid #CC0000;
 }
 
+#stats-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 24px;
+  table-layout: fixed;
+}
+
+#stats-container th, td{
+  padding: 10px;
+  background-color: #1f4072;
+}
+
+#stats-name-display {
+  text-align: center;
+  font-size: 48px;
+}
 
 /* Nav */
 nav ul {
