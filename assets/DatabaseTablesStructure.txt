@@ -1,14 +1,17 @@
 CREATE TABLE accounts(
         account_id INT NOT NULL AUTO_INCREMENT,
-        username VARCHAR(50),
+        display_name VARCHAR(50),
+        username VARCHAR(50,)
         password VARCHAR(50),
         role VARCHAR(10),
+        banned BOOLEAN NOT NULL DEFAULT FALSE,
         PRIMARY KEY (account_id)
     ); 
 
 CREATE TABLE leaderboards(
         leaderboard_id INT NOT NULL AUTO_INCREMENT,
         account_id INT,
+        username VARCHAR(50),
         correct_guess_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (leaderboard_id),
         FOREIGN KEY (account_id) REFERENCES accounts(account_id)
