@@ -8,6 +8,10 @@ const weather = new Weather();
 const locationDisplay = document.getElementById("location-title");
 const mainButton = document.getElementById("main-button")
 const weatherButtons = document.getElementById("weather-button-container");
+const leaderBoardDaily = document.getElementById("leaderboard-daily");
+const leaderBoardWeekly = document.getElementById("leaderboard-weekly");
+const leaderBoardMonthly = document.getElementById("leaderboard-monthly");
+const table = document.getElementById("leaderboard-table");
 
 //Functions
 function correct(button){
@@ -53,6 +57,38 @@ mainButton.addEventListener('click', async () => {
   mainButton.innerHTML = "Next Round";
   locationDisplay.classList.remove("location-title-hide");
 })
+
+function updateLeaderboard(type) {
+    fetch(`get_leaderboard.php?type=${type}`)
+        .then(response => response.json())
+        .then(data => {
+            // Clear existing rows except header
+            table.innerHTML = `
+                <tr>
+                    <th>Username</th>
+                    <th class="leaderboard-value">Score</th>
+                </tr>
+            `;
+            
+            // Add new rows
+            data.forEach(player => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <th>${player.display_name}</th>
+                    <th class="leaderboard-value">${player.score}</th>
+                `;
+                table.appendChild(row);
+            });
+        })
+        .catch(err => console.error('Error fetching leaderboard:', err));
+}
+
+leaderBoardDaily.addEventListener('click', () => updateLeaderboard('daily'));
+leaderBoardWeekly.addEventListener('click', () => updateLeaderboard('weekly'));
+leaderBoardMonthly.addEventListener('click', () => updateLeaderboard('monthly'));
+
+// Load daily leaderboard by default
+updateLeaderboard('daily');
 
 document.querySelectorAll(".weather-button").forEach(button => {
   button.addEventListener('click', async => {
