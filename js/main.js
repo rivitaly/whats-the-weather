@@ -13,6 +13,14 @@ const leaderBoardWeekly = document.getElementById("leaderboard-weekly");
 const leaderBoardMonthly = document.getElementById("leaderboard-monthly");
 const table = document.getElementById("leaderboard-table");
 
+// Set button text if user is NOT logged in
+if (!USER_LOGGED_IN) {
+    mainButton.innerHTML = "Login";
+
+    mainButton.addEventListener("click", () => {
+        window.location.href = "./signin.php";
+    });
+}
 
 //Functions
 function correct(button){
@@ -31,18 +39,6 @@ function incorrect(button, correctButton){
   button.classList.add("incorrect");
   correctButton.classList.add("correct");
 
-}
-
-// Set button text if user is NOT logged in
-if (!USER_LOGGED_IN) {
-    mainButton.innerHTML = "Login";
-
-    mainButton.addEventListener("click", () => {
-        window.location.href = "./signin.php";
-    });
-
-    // Stop the game logic from attaching to this button
-    return;
 }
 
 //Events
