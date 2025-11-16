@@ -67,12 +67,10 @@ else
       </nav>
     </div>
   </header>
-  <!--
   <div id="welcome-user">
     <?php echo "<p class='welcome-message'>{$welcome_message}</p>"?>
-  </div>-->
   <div id="location-display">
-    <p id="location-title">City, Country</p>
+    <p id="location-title" class="location-title-hide">City, Country</p>
   </div>
   <div id="main-panel">
     <div id="planet"></div>
