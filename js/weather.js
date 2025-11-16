@@ -14,8 +14,10 @@ export class WeatherAPISystem {
     api_key = null;
 
     async init() {
-        if(this.cities.length == 0) //Only want to set once
+        if(this.cities.length == 0) {//Only want to set once
             await this.getCityData();
+            await this.setWeatherAPIKey();
+        }
         await this.getRandomCity();
         await this.setWeatherData();
     }
@@ -59,11 +61,11 @@ export class WeatherAPISystem {
         this.lat = cityName.coord.lat;
     }
 
-    async setWeatherAPIKey($n_api_key)
+    async setWeatherAPIKey()
     {
-        this.api_key = $n_api_key;
-        // will need to fetch api key from a php file, since we are doing everything in js there is no way to hide the api_key outright
-        // only way to officially hide it is if we did all the api calls in a php file. 
+        const res = await fetch("./apiKey.php")
+        const data = await res.json();
+        this.api_key = data.api_key;     
     }
 
 }
