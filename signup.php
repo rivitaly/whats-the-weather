@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
     $unameRegex = "/^[a-zA-Z]+$/"; //tester for username input
 
     if (!preg_match($unameRegex, $username) || $password < 7) { //if user input doesn't follow regex or invalid password
-        $errors["user-or-pass"] = "Invalid username or password";
+        $errors["Sign-Up Failed"] = "Invalid username or password";
         $dataOK = FALSE;
     }
 
@@ -59,6 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
 
         // insert account into database
         $result = $db->exec("INSERT INTO accounts (username, password, role) VALUES ('$username', '$password', '$role')");
+
+        $db = null;
 
         header("Location: signin.php");
     }
