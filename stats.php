@@ -28,7 +28,7 @@ if(!isset($_SESSION["account"])){
           <li><a href="index.php">Home</a></li>
           <?php
             if (isset($_SESSION["account"])){
-              if (isset($_SESSION["role"] && $_SESSION["role"] === "Moderator")){
+              if (isset($_SESSION["role"]) && $_SESSION["role"] === "Moderator"){
                 echo '<li><a href="mod.php">Mod Panel</a></li>';
               }
               echo '<li><a href="stats.php">Player Stats</a></li>';
