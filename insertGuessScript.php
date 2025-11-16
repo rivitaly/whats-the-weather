@@ -1,6 +1,7 @@
 <?php
 require_once("db.php");
 session_start();
+echo ("hello");
 
 if (isset($_SESSION["account"]))
 {
