@@ -1,4 +1,4 @@
-import Render from './render.js'
+import {rotatePlanet} from './render.js'
 
 var atmosphereTypes = ["Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Dust", "Ash", "Squall", "Tornado"];
 
