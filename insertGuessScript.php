@@ -18,5 +18,4 @@ try { // data base connection
 
     $db = null;
 }
-
 ?>
