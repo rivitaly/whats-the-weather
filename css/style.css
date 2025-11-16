@@ -27,9 +27,14 @@ body {
     padding: 1em 2em;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    position: relative; /* Needed for dropdown positioning */
 }
 
-.header a, a:visited, a:hover, a:active, a:focus {
+.header a,
+.header a:visited,
+.header a:hover,
+.header a:active,
+.header a:focus {
     color: white;
     text-decoration: none;
 }
@@ -41,14 +46,96 @@ body {
     letter-spacing: 1px;
     font-weight: 700;
 }
+
 #header-title:hover {
-  text-shadow: 0 0 10px var(--text-colour-outline);
+    text-shadow: 0 0 10px var(--text-colour-outline);
 }
+
 .logo-link {
     text-decoration: none;
     color: inherit;
 }
 /* End of Header Stuff */
+
+
+/* -------- HAMBURGER MENU SYSTEM -------- */
+
+/* Hide the checkbox */
+.nav-toggle {
+    display: none;
+}
+
+/* Hamburger icon container */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: 0.3s ease;
+}
+
+/* Transform into X when opened */
+.nav-toggle:checked + .hamburger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle:checked + .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle:checked + .hamburger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Dropdown menu box */
+.nav-menu {
+    position: absolute;
+    top: 80px; /* adjust for header height */
+    right: 20px;
+    background: var(--header-background);
+    padding: 1em 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+/* Show menu when toggled */
+.nav-toggle:checked ~ .nav-menu {
+    display: block;
+}
+
+
+/* --- Inside dropdown --- */
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.nav-menu ul li a {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: var(--text-colour-hover);
+    text-shadow: 0 0 12px var(--text-colour-outline);
+}
+/* -------- END HAMBURGER SYSTEM -------- */
+
 
 #weather-button-container{
   flex-direction: column;
@@ -57,8 +144,6 @@ body {
   align-items: center;
   padding-bottom: 25px;
 }
-
-
 
 #stats-container {
   display: flex;
@@ -78,30 +163,6 @@ body {
   text-align: center;
   font-size: 48px;
 }
-
-/* Nav */
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 1.5em;
-}
-
-nav ul li a {
-
-  font-size: 1.1em;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-nav ul li a:hover {
-  color: var(--text-colour-hover);
-  text-shadow: 0 0 12px var(--text-colour-outline);
-}
-/* End of Nav */
-
 
 
 #location-display {
