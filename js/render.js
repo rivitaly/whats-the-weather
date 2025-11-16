@@ -8,16 +8,23 @@ const fov = 90;
 const scale = 0.1;
 const lightColor = 0xffffff;
 const rotSpeedY = 0.001;
-const distance = 100;
+const distance = 60;
+
+//Where you want the render to be placed
+var container = document.getElementById("planet")
 
 //Scene Setup
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(fov, container.clientWidth / container.clientHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({alpha: true});    //Parameter allows alpha
-renderer.setSize(window.innerWidth, window.innerHeight);
-//Where you want the render to be placed
-var container = document.getElementById("planet")
+renderer.setSize(container.clientWidth, container.clientHeight);
 container.appendChild(renderer.domElement);
+
+window.addEventListener('resize', () => {
+  camera.aspect = container.clientWidth / container.clientHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(container.clientWidth, container.clientHeight);
+});
 
 //To load 3D objects with type *.gltf
 const loader = new GLTFLoader();
@@ -59,6 +66,7 @@ scene.add(ambientLight);
 
 //Render
 function animate() {
+
     //Only perform operations when object is loaded
     if(object){
         object.rotation.y += rotSpeedY;

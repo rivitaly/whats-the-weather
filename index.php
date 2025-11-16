@@ -67,22 +67,53 @@ else
       </nav>
     </div>
   </header>
+  <!--
   <div id="welcome-user">
     <?php echo "<p class='welcome-message'>{$welcome_message}</p>"?>
-  </div>
+  </div>-->
   <div id="location-display">
     <p id="location-title">City, Country</p>
   </div>
-  <div id="planet"></div>
-  <button id="main-button">Start Guessing</button>
-  <div id="weather-button-container" style="visibility: hidden">
-    <button class="weather-button" id="Thunderstorm">Thunderstorm</button>
-    <button class="weather-button" id="Drizzle">Drizzle</button>
-    <button class="weather-button" id="Rain">Rain</button>
-    <button class="weather-button" id="Snow">Snow</button>
-    <button class="weather-button" id="Atmosphere">Atmosphere</button>
-    <button class="weather-button" id="Clear">Clear</button>
-    <button class="weather-button" id="Clouds">Clouds</button>
+  <div id="main-panel">
+    <div id="planet"></div>
+    <div id="leaderboard">
+      <p id="leaderboard-title">Leaderboard</p>
+      <div id="leaderboard-options">
+        <button id="leaderboard-daily">Daily</button>
+        <button id="leaderboard-weekly">Weekly</button>
+        <button id="leaderboard-monthly">Monthly</button>
+      </div>
+      <table id="leaderboard-table">
+          <tr>
+            <th>Username</th>
+            <th class="leaderboard-value">10</th>
+          </tr>
+          <tr>
+            <th>Username2</th>
+            <th class="leaderboard-value">5</th>
+          </tr>
+          <tr>
+            <th>Username3</th>
+            <th class="leaderboard-value">0</th>
+          </tr>
+      </table>
+    </div>
+  </div>
+  <div id="main-button-container">
+    <button id="main-button">Start Guessing</button>
+  </div>
+  <div id="weather-button-container" style="visibility: visible">
+    <div>
+      <button class="weather-button" id="Thunderstorm"><img src="assets/weather-icons/thunderstorm.png"></button>
+      <button class="weather-button" id="Drizzle"><img src="assets/weather-icons/drizzle.png"></button>
+      <button class="weather-button" id="Rain"><img src="assets/weather-icons/rain.png"></button>
+      <button class="weather-button" id="Snow"><img src="assets/weather-icons/snow.png"></button>
+    </div>
+    <div>
+      <button class="weather-button" id="Atmosphere"><img src="assets/weather-icons/atmosphere.png"></button>
+      <button class="weather-button" id="Clear"><img src="assets/weather-icons/clear.png"></button>
+      <button class="weather-button" id="Clouds"><img src="assets/weather-icons/clouds.png"></button>
+    </div>
   </div>
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/render.js"></script>
