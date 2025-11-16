@@ -82,6 +82,7 @@ else
     </nav>
   </div>
 </header>
+<div id="randomtestimage"><img src="testPhoto.jpg"></div>
   <div id="welcome-user">
     <?php echo "<p class='welcome-message'>{$welcome_message}</p>"?>
   </div>
