@@ -1,3 +1,5 @@
+import Render from './render.js'
+
 var atmosphereTypes = ["Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Dust", "Ash", "Squall", "Tornado"];
 
 //Weather Class System 
@@ -19,6 +21,7 @@ export class WeatherAPISystem {
             await this.setWeatherAPIKey();
         }
         await this.getRandomCity();
+        rotatePlanet(this.long, this.lat);  //Rotates planet
         await this.setWeatherData();
     }
 
