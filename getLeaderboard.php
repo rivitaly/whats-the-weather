@@ -34,15 +34,19 @@ $sql = "
     LIMIT 10
 ";
 
-$result = $db->query($sql);
-$leaderboard = [];
+try {
+    // Execute the query
+    $stmt = $db->query($sql);
 
-if ($result) {
-    while ($row = $result->fetch_assoc()) {
-        $leaderboard[] = $row;
-    }
+    // Fetch all results as an associative array
+    $leaderboard = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Output JSON
+    echo json_encode($leaderboard);
+
+} catch (PDOException $e) {
+    // Return an error in JSON format
+    echo json_encode(['error' => 'Query failed: ' . $e->getMessage()]);
 }
-
-echo json_encode($leaderboard);
 $mysqli->close();
 ?>
