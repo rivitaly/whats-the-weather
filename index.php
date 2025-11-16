@@ -18,6 +18,10 @@ if (isset($_SESSION["account_id"])) {
   $welcome_message = ($account->username == "") ? "Welcome user\n" : "Welcome back, {$account->username}\n";
 
 }
+else
+{
+  $welcome_message = "Welcome user\n";
+}
 
 ?>
 
@@ -45,14 +49,14 @@ if (isset($_SESSION["account_id"])) {
       </a>
       <nav>
         <ul>
+          <li><a href="index.php">Home</a></li>
           <?php
-            if (isset($_SESSION["account_id"])){
+            if (isset($_SESSION["account"])){
               echo '<li><a id="logout" href="logout.php">Log Out</a></li>';
             }
           ?>
-          <li><a href="index.php">Home</a></li>
           <?php
-            if (!isset($_SESSION["account_id"])){
+            if (!isset($_SESSION["account"])){
               echo '<li><a href="signin.php">Sign In</a></li>';
               echo '<li><a href="signup.php">Sign Up</a></li>';
             }
