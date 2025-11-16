@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
     $password = test_input($_POST["password"]);
     $moderator_key = test_input($_POST["moderator-key"]);
 
-    $unameRegex = "/^[a-zA-Z0-9_]+$/"; //tester for username input
+    $unameRegex = "/^[a-zA-Z]+$/"; //tester for username input
 
     if (!preg_match($unameRegex, $username) || $password < 7) { //if user input doesn't follow regex or invalid password
         $errors["user-or-pass"] = "Invalid username or password";

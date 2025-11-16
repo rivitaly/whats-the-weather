@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
     $username = test_input($_POST["username"]);
     $password = test_input($_POST["password"]);
 
-    $unameRegex = "/^[a-zA-Z0-9_]+$/"; //tester for username input
+    $unameRegex = "/^[a-zA-Z]+$/"; //tester for username input
 
     if (!preg_match($unameRegex, $username) || $password < 7) { //if user input doesn't follow regex
         $errors["user-or-pass"] = "Invalid username or password";
