@@ -47,7 +47,7 @@ if (isset($_SESSION["account_id"])) {
         <ul>
           <?php
             if (isset($_SESSION["account_id"])){
-              <li><a id="logout" href="logout.php">Log Out</a></li>
+              echo '<li><a id="logout" href="logout.php">Log Out</a></li>'
             }
           ?>
           <li><a href="index.php">Home</a></li>
