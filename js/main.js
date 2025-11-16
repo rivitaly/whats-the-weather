@@ -19,6 +19,7 @@ function correct(button){
     method: "POST",
     credentials: "include"
   })
+  .then(console.log("yay"))
 }
 
 function incorrect(button, correctButton){
