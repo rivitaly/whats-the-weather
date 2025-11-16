@@ -2,7 +2,7 @@ var form = document.getElementById("signin-form");
 form.addEventListener("submit", validateLogin);
 
 function validateUsername(v_username) {
-    var unameRegEx = /^[a-zA-Z0-9_]+$/;
+    var unameRegEx = /^[a-zA-Z]+$/;
     return (unameRegEx.test(v_username))
 }
 

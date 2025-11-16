@@ -7,7 +7,7 @@ password.addEventListener("blur", passwordHandler);
 re_password.addEventListener("blur", re_passwordHandler);
 
 function validateUsername(v_username) {
-    var unameRegEx = /^[a-zA-Z0-9_]+$/;
+    var unameRegEx = /^[a-zA-Z]+$/;
     return (unameRegEx.test(v_username))
 }
 
