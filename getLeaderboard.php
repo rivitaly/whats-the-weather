@@ -48,5 +48,5 @@ try {
     // Return an error in JSON format
     echo json_encode(['error' => 'Query failed: ' . $e->getMessage()]);
 }
-$mysqli->close();
+
 ?>
