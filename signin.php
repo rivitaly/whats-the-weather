@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
 
         try { // database connection
             $db = new PDO($attr, $db_user, $db_pwd, $options);
-            $result = $db->query("SELECT account_id, role, username FROM accounts WHERE username = '$username' AND password = '$password'"); //look for account with that username and password
+            $result = $db->query("SELECT account_id, role, username, display_name FROM accounts WHERE username = '$username' AND password = '$password'"); //look for account with that username and password
 
             if (!$result) { //database fail
                 $errors["Database Error"] = "Could not retrieve user information";
