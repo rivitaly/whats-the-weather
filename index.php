@@ -11,7 +11,7 @@ if (isset($_SESSION["account_id"])) {
     throw new PDOException($e->getMessage(), (int) $e->getCode());
   }
 
-  $account = AccountFactory::createAccount($_SESSION["account_id"], $_SESSION["username"], $_SESSION["role"]);
+  $account = AccountFactory::createAccount($_SESSION["account_id"], $_SESSION["username"],$_SESSION["display_name"], $_SESSION["role"]);
   
   $_SESSION["account"] = $account; //can use this acrosss php files so we can access the account
 
