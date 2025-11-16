@@ -2,7 +2,7 @@
 session_start();
 require_once("accountFactory.php");
 require_once("db.php");
-fetch(`get_leaderboard.php?type=$type`);
+require_once("getLeaderboard.php");
 
 if (isset($_SESSION["account_id"])) {
   
