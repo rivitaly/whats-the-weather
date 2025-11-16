@@ -16,7 +16,7 @@ try { // data base connection
     $n_account_display_name = $_SESSION['account']->display_name;
 
     // Insert correct guess into leaderboards
-    $db->exec("INSERT INTO leaderboards (account_id, correct_guess_data, username) VALUES ('$n_account_id', NOW(), '$n_account_display_name')");
+    $db->exec("INSERT INTO leaderboards (account_id, correct_guess_data, display_name) VALUES ('$n_account_id', NOW(), '$n_account_display_name')");
 
     $db = null;
 }
