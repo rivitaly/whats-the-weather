@@ -74,14 +74,14 @@ body {
 }
 
 .weather-button.correct {
-  color: #00DD00;
-  border: 2px solid #00DD00;
+  /*color: #00DD00;
+  border: 2px solid #00DD00;*/
   filter: invert(63%) sepia(53%) saturate(6933%) hue-rotate(88deg) brightness(116%) contrast(114%);
 }
 
 .weather-button.incorrect {
-  color: #CC0000;
-  border: 2px solid #CC0000;
+  /*color: #CC0000;
+  border: 2px solid #CC0000;*/
   filter: invert(12%) sepia(68%) saturate(5451%) hue-rotate(355deg) brightness(100%) contrast(119%);
 }
 
