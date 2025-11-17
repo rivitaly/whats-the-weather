@@ -34,7 +34,7 @@ export class WeatherAPISystem {
             this.type = data.weather[0].main;
             this.main = data.main;
             //If of Atmosphere type, set to Atmosphere
-            if (atmosphereTypes.includes(this.main)){
+            if (atmosphereTypes.includes(this.type)){
                 this.type = "Atmosphere";
             }
         }
