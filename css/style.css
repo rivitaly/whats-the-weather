@@ -150,19 +150,6 @@ body {
   padding-bottom: 25px;
 }
 
-#stats-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 24px;
-  table-layout: fixed;
-}
-
-#stats-container th, td{
-  padding: 10px;
-  background-color: #1f4072;
-}
 
 #stats-name-display {
   text-align: center;
