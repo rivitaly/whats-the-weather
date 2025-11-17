@@ -283,38 +283,52 @@ body {
 }
 
 /* User Stats */
-.user-stats-table {
-    width: 80%;
-    max-width: 600px;
-    margin: 0 auto 2em auto;
-    border-spacing: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: var(--boxShadow);
+/* Container for both tables */
+#stats-tables-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 20px;
+    flex-wrap: wrap;
 }
 
-.user-stats-table th, .user-stats-table td {
-    padding: 10px;
+/* Top player stats header */
+#player-stats-header {
     text-align: center;
-    background-color: #1f4072;
+    font-size: 2em;
+    margin-top: 20px;
     color: white;
 }
 
-.user-stats-table tr:nth-child(odd){
+/* Left summary table */
+#summary-table, #guesses-table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--boxShadow);
+    background-color: #0f1f33;
+    color: white;
+    font-size: 1em;
+}
+
+#summary-table th, #summary-table td,
+#guesses-table th, #guesses-table td {
+    padding: 12px 16px;
+    text-align: center;
+}
+
+#summary-table th, #guesses-table th {
+    background-color: var(--header-background);
+    font-size: 1.1em;
+}
+
+#summary-table tr:nth-child(odd), #guesses-table tr:nth-child(odd) {
     background-color: var(--tableNthOdd);
 }
 
-.user-stats-table tr:nth-child(even){
+#summary-table tr:nth-child(even), #guesses-table tr:nth-child(even) {
     background-color: var(--tableNthEven);
-}
-
-.user-stats-table th {
-    background-color: var(--header-background);
-    font-size: 1.2em;
-}
-
-.user-stats-table td {
-    font-size: 1em;
 }
 
 /* Start of CSS Styles for Signup and Signin */
@@ -533,6 +547,11 @@ body {
     justify-items: center;
   }
 
+  #stats-tables-container {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+  }
 
   .ghost-box {
     grid-row: 1;
