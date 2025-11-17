@@ -414,10 +414,9 @@ body {
 }
 
 #mod-table-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-content: center; /* centers horizontally */
-    align-items: start;      /* aligns table at top of container */
+    display: flex;
+    justify-content: center; 
+    align-items: start;      
     margin-top: 20px;
 }
 
