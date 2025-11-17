@@ -14,8 +14,14 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
-// Fetch all users
-$stmt = $db->query("SELECT account_id, username, display_name, role, banned FROM accounts ORDER BY username ASC");
+// Fetch all users: regular users first, then mods
+$stmt = $db->query("
+    SELECT account_id, username, display_name, role, banned 
+    FROM accounts 
+    ORDER BY 
+        CASE WHEN role='Moderator' THEN 1 ELSE 0 END ASC, 
+        username ASC
+");
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
