@@ -293,7 +293,7 @@ body {
     margin-top: 20px;
 }
 
-/* Top player stats header */
+/* Player header */
 #player-stats-header {
     text-align: center;
     font-size: 2em;
@@ -301,7 +301,7 @@ body {
     color: white;
 }
 
-/* Left summary table and right guesses table */
+/* Tables styling */
 #summary-table, #guesses-table {
     border-collapse: collapse;
     border-radius: 10px;
@@ -548,7 +548,7 @@ body {
   }
 
   #stats-tables-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* stack vertically */
     grid-template-rows: auto auto;
     gap: 20px;
     justify-items: center;
@@ -559,11 +559,12 @@ body {
     max-width: 450px;
     grid-row: 1;
   }
+
   #guesses-table {
     width: 90%;
     max-width: 450px;
     grid-row: 2;
-  }
+  } 
 
   .ghost-box {
     grid-row: 1;

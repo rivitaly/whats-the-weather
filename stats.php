@@ -81,7 +81,7 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </header>
 
-<div id="player-stats-header"><?= $_SESSION["display_name"] ?> Stats :</div>
+<p id="player-stats-header"><?= $_SESSION["display_name"] ?> Stats :</p>
 
 <div id="stats-tables-container">
     <!-- Left Summary Table -->
