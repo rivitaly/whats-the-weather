@@ -78,7 +78,6 @@ else
             }
             echo '<li><a href="stats.php">Player Stats</a></li>';
             echo '<li><a href="logout.php">Log Out</a></li>';
-            echo '<li><a href="stats.php">User Stats</a></li>';
           }
           else{
             echo '<li><a href="signin.php">Sign In</a></li>';
