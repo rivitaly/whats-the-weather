@@ -548,15 +548,22 @@ body {
   }
 
   #stats-tables-container {
-      grid-template-columns: 1fr; /* stack tables vertically */
-      gap: 20px;
-      justify-items: center;
-    }
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    justify-items: center;
+  }
 
-    #summary-table, #guesses-table {
-      width: 90%;
-      max-width: 500px;
-    }
+  #summary-table {
+    width: 90%;
+    max-width: 450px;
+    grid-row: 1;
+  }
+  #guesses-table {
+    width: 90%;
+    max-width: 450px;
+    grid-row: 2;
+  }
 
   .ghost-box {
     grid-row: 1;
