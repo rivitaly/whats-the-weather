@@ -43,6 +43,7 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Stats - What's the Weather</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/stats.css">
