@@ -11,10 +11,20 @@ if(!isset($_SESSION["account"])){
 $userId = $_SESSION["account_id"];
 
 try {
-    $db = new PDO($attr, $db_user, $db_pwd, $options);
-} catch (PDOException $e) {
+    $playerAccount = $_SESSION['account_id'];
+    $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
+    $row = $result->fetch();
+    if ($row['banned'] == 1)
+    {
+        header("Location: banned.php");
+        exit();
+    } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }
+
+  
+    throw new PDOException($e->getMessage(), (int) $e->getCode());
+  }
 
 // Fetch aggregated counts
 $stmt = $db->prepare("
