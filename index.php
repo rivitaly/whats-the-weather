@@ -8,7 +8,7 @@ if (isset($_SESSION["account_id"])) {
   try { // data base connection
     $db = new PDO($attr, $db_user, $db_pwd, $options);
        // Checks for banned user and redirects if found
-    $result = $db->query("SELECT banned from accounts WHERE account_id = '$_SESSION["account_id'");
+    $result = $db->query("SELECT banned from accounts WHERE account_id = '$_SESSION["account_id"]'");
     $row = $result->fetch()
     if ($row['banned'] == 1)
     {
