@@ -5,7 +5,7 @@
   --header-background: #34578c;
   --celestial-blue: #1b98e0ff;
   --celestial-light-blue: rgb(121, 206, 255);
-  --alice-blue: #e8f1f2ff;
+  --inputFields: #e8f1f2ff;
   --boxShadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   --cerulean: #007BA7;
 }
@@ -339,7 +339,7 @@ body {
   padding: 0.8em;
   border-radius: 10px;
   border: 2px solid #d3d3d3;
-  background-color: var(--alice-blue);
+  background-color: var(--inputFields);
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
