@@ -11,7 +11,7 @@ if (isset($_SESSION["account_id"])) {
        // Checks for banned user and redirects if found
     $playerAccount = $_SESSION['account_id'];
     $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
-    $row = $result->fetch()
+    $row = $result->fetch();
     if ($row['banned'] == 1)
     {
         header("Location: banned.php");
