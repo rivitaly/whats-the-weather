@@ -2,61 +2,87 @@
 require_once("db.php");
 session_start();
 
-//If not logged in or not Moderator, redirect
+// Redirect if not logged in or not a Moderator
 if(!isset($_SESSION["account"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "Moderator"){
     header("Location: index.php");
     exit();
 }
 
+try {
+    $db = new PDO($attr, $db_user, $db_pwd, $options);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
+
+// Fetch all users
+$stmt = $db->query("SELECT account_id, username, display_name, role, banned FROM accounts ORDER BY username ASC");
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>What's the Weather</title>
-  <link rel="stylesheet" href="css/style.css">
+    <title>Mod Panel - What's the Weather</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mod.css">
 </head>
-
 <body>
 <header>
-  <div class="header">
-    <a href="index.php" class="logo-link">
-      <h1 id="header-title">What's the Weather</h1>
-    </a>
+    <div class="header">
+        <a href="index.php" class="logo-link">
+            <h1 id="header-title">What's the Weather</h1>
+        </a>
 
-    <!-- Hamburger Button -->
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
 
-    <!-- Dropdown Menu -->
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="index.php">Home</a></li>
-        <?php
-          if (isset($_SESSION["account"])){
-            if (isset($_SESSION["role"]) && $_SESSION["role"] === "Moderator"){
-              echo '<li><a href="mod.php">Mod Panel</a></li>';
-            }
-            echo '<li><a href="stats.php">Player Stats</a></li>';
-            echo '<li><a href="logout.php">Log Out</a></li>';
-          }
-          else{
-            echo '<li><a href="signin.php">Sign In</a></li>';
-            echo '<li><a href="signup.php">Sign Up</a></li>';
-          }
-        ?>
-      </ul>
-    </nav>
-  </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="mod.php">Mod Panel</a></li>
+                <li><a href="stats.php">Player Stats</a></li>
+                <li><a href="logout.php">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/render.js"></script>
-  </div>
-</body>
 
+<p id="mod-panel-header">User Management</p>
+
+<div id="mod-table-container">
+    <table id="users-table">
+        <tr>
+            <th>Username</th>
+            <th>Display Name</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <?php foreach($users as $user): ?>
+            <tr>
+                <td><?= htmlspecialchars($user['username']) ?></td>
+                <td><?= htmlspecialchars($user['display_name']) ?></td>
+                <td><?= htmlspecialchars($user['role']) ?></td>
+                <td><?= $user['banned'] ? 'Banned' : 'Active' ?></td>
+                <td>
+                    <?php if($user['role'] === 'Moderator'): ?>
+                        <button disabled>Mod</button>
+                    <?php else: ?>
+                        <form method="post" action="ban_user.php" style="margin:0;">
+                            <input type="hidden" name="account_id" value="<?= $user['account_id'] ?>">
+                            <input type="hidden" name="action" value="<?= $user['banned'] ? 'unban' : 'ban' ?>">
+                            <button type="submit"><?= $user['banned'] ? 'Unban' : 'Ban' ?></button>
+                        </form>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
+
+</body>
 </html>
