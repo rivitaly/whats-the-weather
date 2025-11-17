@@ -16,7 +16,7 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
-// Fetch counts using SQL
+// Fetch aggregated counts
 $stmt = $db->prepare("
     SELECT
         COUNT(*) AS all_time,
@@ -29,7 +29,7 @@ $stmt = $db->prepare("
 $stmt->execute([$userId]);
 $counts = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Fetch all guesses for detailed table
+// Fetch all guesses
 $stmt2 = $db->prepare("
     SELECT correct_guess_data
     FROM leaderboards
@@ -45,6 +45,7 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <title>User Stats - What's the Weather</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stats.css">
 </head>
 <body>
 <header>
@@ -80,28 +81,25 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </header>
 
-<div id="stats-container">
-    <h2 id="stats-name-display"><?= $_SESSION["display_name"] ?>'s Stats</h2>
+<div id="player-stats-header"><?= $_SESSION["display_name"] ?> Stats :</div>
 
-    <table id="stats-table">
+<div id="stats-tables-container">
+    <!-- Left Summary Table -->
+    <table id="summary-table">
         <tr>
-            <th>Daily</th>
-            <th>Weekly</th>
-            <th>Monthly</th>
-            <th>All Time</th>
+            <th>Period</th>
+            <th>Correct Guesses</th>
         </tr>
-        <tr>
-            <td><?= $counts['daily'] ?></td>
-            <td><?= $counts['weekly'] ?></td>
-            <td><?= $counts['monthly'] ?></td>
-            <td><?= $counts['all_time'] ?></td>
-        </tr>
+        <tr><td>Daily</td><td><?= $counts['daily'] ?></td></tr>
+        <tr><td>Weekly</td><td><?= $counts['weekly'] ?></td></tr>
+        <tr><td>Monthly</td><td><?= $counts['monthly'] ?></td></tr>
+        <tr><td>All Time</td><td><?= $counts['all_time'] ?></td></tr>
     </table>
 
-    <h3>All Correct Guess Dates</h3>
-    <table class="user-stats-table">
+    <!-- Right Detailed Table -->
+    <table id="guesses-table">
         <tr>
-            <th>#</th>
+            <th># of Correct Guesses</th>
             <th>Date & Time</th>
         </tr>
         <?php if(empty($guesses)): ?>
@@ -110,7 +108,7 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach($guesses as $i => $row): ?>
                 <tr>
                     <td><?= $i + 1 ?></td>
-                    <td><?= date("Y-m-d H:i", strtotime($row['correct_guess_data'])) ?></td>
+                    <td><?= date("h:ia, d/m/Y", strtotime($row['correct_guess_data'])) ?></td>
                 </tr>
             <?php endforeach; ?>
         <?php endif; ?>
