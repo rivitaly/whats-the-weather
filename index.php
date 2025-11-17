@@ -2,6 +2,10 @@
 session_start();
 require_once("accountFactory.php");
 require_once("db.php");
+if ($_SESSION["banned"] == 1) {
+    header("Location: banned.php");
+    exit();
+}
 
 if (isset($_SESSION["account_id"])) {
   
