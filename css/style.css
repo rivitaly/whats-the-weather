@@ -20,6 +20,7 @@ body {
     background: var(--background-colour);
     color: white;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 1px;
 }
 
 /* Header Stuff */
@@ -456,8 +457,9 @@ body {
     cursor: pointer;
     background-color: var(--text-colour-outline);
     color: white;
-    font-weight: 600;
+    font-weight: 400;
     transition: background-color 0.3s ease;
+    letter-spacing: 1px;
 }
 
 #users-table button:hover:enabled {
