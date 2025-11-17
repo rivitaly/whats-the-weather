@@ -3,18 +3,18 @@ session_start();
 require_once("accountFactory.php");
 require_once("db.php");
 
-// Checks to see if the user is currently banned and if so, redirects them
-if (isset($_SESSION['banned'])) {
-    if ($_SESSION['banned'] == 1) {
-        header("Location: banned.php");
-        exit();
-    }
-}
-
 if (isset($_SESSION["account_id"])) {
   
   try { // data base connection
     $db = new PDO($attr, $db_user, $db_pwd, $options);
+       // Checks for banned user and redirects if found
+    $result = $db->query("SELECT banned from accounts WHERE account_id = '$_SESSION["account_id'");
+    $row = $result->fetch()
+    if ($row['banned'] == 1)
+    {
+        header("Location: banned.php");
+        exit();
+    }
   } catch (PDOException $e) {
     throw new PDOException($e->getMessage(), (int) $e->getCode());
   }
