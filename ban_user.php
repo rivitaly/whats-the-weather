@@ -1,7 +1,7 @@
 <?php
 require_once("db.php");
 session_start();
-$playerAccount = $_POST['account_id']
+$playerAccount = $_POST['account_id'];
 // Redirect if not logged in or not a Moderator
 if(!isset($_SESSION["account"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "Moderator"){ 
     header("Location: index.php");
@@ -42,4 +42,5 @@ else if (!$playerAccount) {
 // In the event of some unknown error, Redirects you back to the main page
 header("Location: index.php")
 ?>
+
 
