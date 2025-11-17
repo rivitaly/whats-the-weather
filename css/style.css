@@ -285,12 +285,12 @@ body {
 /* User Stats */
 /* Container for both tables */
 #stats-tables-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, auto); /* two tables side by side */
     justify-content: center;
-    align-items: flex-start;
+    align-items: start;
     gap: 40px;
     margin-top: 20px;
-    flex-wrap: wrap;
 }
 
 /* Top player stats header */
@@ -301,7 +301,7 @@ body {
     color: white;
 }
 
-/* Left summary table */
+/* Left summary table and right guesses table */
 #summary-table, #guesses-table {
     border-collapse: collapse;
     border-radius: 10px;
@@ -548,14 +548,15 @@ body {
   }
 
   #stats-tables-container {
-      flex-direction: column;
+      grid-template-columns: 1fr; /* stack tables vertically */
       gap: 20px;
-      align-items: center;
-  }
-  #summary-table, #guesses-table {
-    width: 90%;
-    max-width: 500px;
-  }
+      justify-items: center;
+    }
+
+    #summary-table, #guesses-table {
+      width: 90%;
+      max-width: 500px;
+    }
 
   .ghost-box {
     grid-row: 1;
