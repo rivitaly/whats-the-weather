@@ -24,9 +24,6 @@ if(!isset($_SESSION["account"]) || !isset($_SESSION["role"]) || $_SESSION["role"
         <h1 id="header-title">What's the Weather</h1>
       </a>
 
-      <!-- Hamburger Button -->
-      <input type="checkbox" id="nav-toggle" class="nav-toggle">
-      <label for="nav-toggle" class="hamburger">
         <span></span>
         <span></span>
         <span></span>
