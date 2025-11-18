@@ -57,6 +57,7 @@ require_once("db.php");
               echo '<li><a href="mod.php">Mod Panel</a></li>';
             }
             echo '<li><a href="stats.php">Player Stats</a></li>';
+            echo '<li><a href="credits.php">Source Credits</a></li>';
             echo '<li><a href="logout.php">Log Out</a></li>';
           }
           else{
@@ -68,9 +69,35 @@ require_once("db.php");
     </nav>
   </div>
 </header>
-<p>Earth Model: <a href="https://sketchfab.com/3d-models/planeet-aarde-1dbdb56dd730412cb7e23f772b3794e5">Here</a></p>
-<p>Rendering: <a href="https://threejs.org/">Three.js</a></p>
-<p>Weather API: <a href="https://openweathermap.org/">OpenWeatherMap</a></p>
-<p>Weather Icons: <a href="https://www.vecteezy.com/free-vector/weather">Vectors by Vecteezy</a></p>
+<p id="mod-panel-header">Credits</p>
+
+<div id="mod-table-container">
+    <table id="users-table">
+        <tr>
+            <th>Item</th>
+            <th>Source</th>
+        </tr>
+
+        <tr>
+            <td>Earth Model</td>
+            <td><a href="https://sketchfab.com/3d-models/planeet-aarde-1dbdb56dd730412cb7e23f772b3794e5">Sketchfab Model</a></td>
+        </tr>
+
+        <tr>
+            <td>Rendering Engine</td>
+            <td><a href="https://threejs.org/">Three.js</a></td>
+        </tr>
+
+        <tr>
+            <td>Weather API</td>
+            <td><a href="https://openweathermap.org/">OpenWeatherMap</a></td>
+        </tr>
+
+        <tr>
+            <td>Weather Icons</td>
+            <td><a href="https://www.vecteezy.com/free-vector/weather">Vecteezy (Weather Icons)</a></td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

@@ -51,6 +51,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <li><a href="index.php">Home</a></li>
                 <li><a href="mod.php">Mod Panel</a></li>
                 <li><a href="stats.php">Player Stats</a></li>
+                <li><a href="credits.php">Source Credits</a></li>
                 <li><a href="logout.php">Log Out</a></li>
             </ul>
         </nav>
