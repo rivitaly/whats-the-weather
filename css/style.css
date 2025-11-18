@@ -471,8 +471,8 @@ body {
     text-decoration: none;
 }
 #users-table a:hover {
-  background-color: var(--celestial-light-blue);
-  transform: translateY(-3px);
+    color: var(--text-colour-hover);
+    text-shadow: 0 0 12px var(--text-colour-outline);
 }
 
 #banned-container{
