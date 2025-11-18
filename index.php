@@ -95,7 +95,7 @@ else
     </nav>
   </div>
 </header>
-<p>Test</p>
+<p>Test2</p>
   <div id="welcome-user">
     <?php echo "<p class='welcome-message'>{$welcome_message}</p>"?>
   </div>
