@@ -14,7 +14,7 @@ if (isset($_SESSION["account_id"])) {
     try {
         $db = new PDO($attr, $db_user, $db_pwd, $options);
 
-        $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
+        $result = $db->query("SELECT banned from accounts WHERE account_id = '$userID'");
         // Checking for Database Errors
         if (!$result) {
             $row = $result->fetch();
