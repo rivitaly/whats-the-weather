@@ -28,10 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
     $password = test_input($_POST["password"]);
     $moderator_key = test_input($_POST["moderator-key"]);
 
-    $unameRegex = "/^[a-zA-Z]+$/"; //tester for username input
+    $unameRegex = "/^[a-zA-Z]{1,20}$/"; //tester for username input, must be between 1-20 characters
 
-    if (!preg_match($unameRegex, $username) || $password < 7) { //if user input doesn't follow regex or invalid password
-        $errors["Sign-Up Failed"] = "Invalid username or password";
+    if (!preg_match($unameRegex, $username) && ($password < 7 && $password <= 64)) { //if user input doesn't follow regex AND invalid password
+        $errors["Sign-Up Failed"] = "Invalid username and password. Usernames must be between 1 - 20 letters and passwords must be between 7 - 64 characters.";
+        $dataOK = FALSE;
+    } else if(!preg_match($unameRegex, $username)) { //if user input doesn't follow regex
+        $errprs["Sign-Up Failed"] = "Invalid username.  Must be between 1 - 20 letters.";
+        $dataOK = FALSE;
+    } else if($password < 7 && $password <= 64) { //if user input is invalid password
+        $errors["Sign-Up Failed"] = "Invalid password.  Must be between 7 - 64 characters.";
         $dataOK = FALSE;
     }
 
