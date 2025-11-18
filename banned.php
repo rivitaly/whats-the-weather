@@ -2,13 +2,22 @@
 require_once("db.php");
 session_start();
 
-//If not logged in or not Moderator, redirect
-if(!isset($_SESSION["account"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "Moderator"){
-  header("Location: index.php");
-  exit();
-
-}
-
+if(isset($_SESSION["account"]) {
+   $playerAccount = $_SESSION["account"];
+   if($_SESSION["role"] !== "Moderator") {
+      try {
+        $db = new PDO($attr, $db_user, $db_pwd, $options);
+        $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
+        $row = $result->fetch();
+        if($row['banned'] !== '1') {
+          header("Location: index.php");
+          exit();
+        }
+      }
+      
+    } catch (PDOException $e) {
+        throw new PDOException($e->getMessage(), (int) $e->getCode());
+    }
 ?>
 
 <!DOCTYPE html>
