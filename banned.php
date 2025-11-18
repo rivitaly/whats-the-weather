@@ -4,10 +4,10 @@ session_start();
 
 if(isset($_SESSION["account"])) {
    $playerAccount = $_SESSION["account"];
-   if($_SESSION["role"] !== "Moderator") {
+   if($_SESSION["role"] != "Moderator") {
       try {
         $db = new PDO($attr, $db_user, $db_pwd, $options);
-        $result = $db->query("SELECT banned from accounts WHERE account_id = $playerAccount");
+        $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
         $row = $result->fetch();
         if($row['banned'] !== '1') {
           header("Location: index.php");
