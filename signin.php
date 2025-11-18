@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("db.php");
+require_once("accountFactory.php");
 
 // If user is already logged in, redirect to index.php
 if (isset($_SESSION["account_id"])) {
@@ -43,10 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
                 $errors["Database Error"] = "Could not retrieve user information";
             } else if ($row = $result->fetch()) { //if data exists
 
-                $_SESSION["account_id"] = $row["account_id"];
-                $_SESSION["role"] = $row["role"];
-                $_SESSION["username"] = $row["username"];
-                $_SESSION["display_name"] = $row["display_name"];
+                $account = AccountFactory::createAccount($row["account_id"], $row["username"], $row["display_name"], $row["role"], $row["banned"]);
+  
+                $_SESSION["account"] = $account; //can use this acrosss php files so we can access the account (need to include accountFactory.php when using)
 
                 //send to index signed in
                 header("Location: index.php");

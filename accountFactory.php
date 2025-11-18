@@ -7,13 +7,15 @@ class Account
     public $username;
     public $display_name;
     public $role;
+    public $banned;
 
-    public function __construct($n_id, $n_username, $n_display_name, $n_role)
+    public function __construct($n_id, $n_username, $n_display_name, $n_role, $n_banned)
     {
         $this->id = $n_id;
         $this->username = $n_username;
         $this->display_name = $n_display_name;
         $this->role = $n_role;
+        $this->banned = $n_banned;
     }
 }
 
@@ -35,14 +37,14 @@ class Moderator extends Account
 
 class AccountFactory
 {
-    public static function createAccount($n_id, $n_username, $n_display_name, $n_role)
+    public static function createAccount($n_id, $n_username, $n_display_name, $n_role, $n_banned)
     {
         switch ($n_role) {
             case "Moderator":
-                return new Moderator( $n_id, $n_username, $n_display_name, $n_role);
+                return new Moderator($n_id, $n_username, $n_display_name, $n_role, $n_banned);
 
             case "Player":
-                return new Player($n_id, $n_username, $n_display_name, $n_role);
+                return new Player($n_id, $n_username, $n_display_name, $n_role, $n_banned);
         }
     }
 }
