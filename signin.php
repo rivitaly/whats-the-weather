@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
                 $errors["Database Error"] = "Could not retrieve user information";
             } else if ($row = $result->fetch()) { //if data exists
 
-                $account = AccountFactory::createAccount($row["account_id"], $row["username"], $row["display_name"], $row["role"], $row["banned"]);
+                $account = AccountFactory::createAccount($row["account_id"], $row["username"], $row["display_name"], $row["role"]);
   
                 $_SESSION["account"] = $account; //can use this acrosss php files so we can access the account (need to include accountFactory.php when using)
 
