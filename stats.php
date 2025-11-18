@@ -15,7 +15,7 @@ else
         $userId = $_SESSION['account']->id;
         $result = $db->query("SELECT banned from accounts WHERE account_id = '$userId'");
         // Checking for Database Errors
-        if (!$result) {
+        if ($result) {
             $row = $result->fetch();
             if ($row['banned'] == 1)
             {
