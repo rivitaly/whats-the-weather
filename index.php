@@ -1,15 +1,16 @@
 <?php
-session_start();
 require_once("accountFactory.php");
 require_once("db.php");
+session_start();
 
 
-if (isset($_SESSION["account_id"])) {
+
+if (isset($_SESSION["account"])) {
   
   try { // data base connection
     $db = new PDO($attr, $db_user, $db_pwd, $options);
        // Checks for banned user and redirects if found
-    $playerAccount = $_SESSION['account_id'];
+    $playerAccount = $_SESSION['account']->id;
     $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
     $row = $result->fetch();
     if ($row['banned'] == 1)
@@ -21,11 +22,7 @@ if (isset($_SESSION["account_id"])) {
     throw new PDOException($e->getMessage(), (int) $e->getCode());
   }
 
-  $account = AccountFactory::createAccount($_SESSION["account_id"], $_SESSION["username"],$_SESSION["display_name"], $_SESSION["role"]);
-  
-  $_SESSION["account"] = $account; //can use this acrosss php files so we can access the account (need to include accountFactory.php when using)
-
-  $welcome_message = ($account->display_name == "") ? "Welcome user\n" : "Welcome back, {$account->display_name}\n";
+  $welcome_message = ($_SESSION['account']->display_name == "") ? "Welcome user\n" : "Welcome back, {$_SESSION['account']->display_name}\n";
 
 }
 else
@@ -55,9 +52,8 @@ else
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Play:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.ico"/>
 </head>
-
 <script>
-    const USER_LOGGED_IN = <?php echo isset($_SESSION["account"]) ? "true" : "false"; ?>;
+    const USER_LOGGED_IN = <?php echo isset($_SESSION["account"]) ? "true" : "false"; ?>; //used for main.js
 </script>
 <script type="module" src="js/main.js"></script>
 <script type="module" src="js/render.js"></script>
@@ -83,7 +79,7 @@ else
         <li><a href="index.php">Home</a></li>
         <?php
           if (isset($_SESSION["account"])){
-            if (isset($_SESSION["role"]) && $_SESSION["role"] === "Moderator"){
+            if ($_SESSION["account"]->role === "Moderator"){
               echo '<li><a href="mod.php">Mod Panel</a></li>';
             }
             echo '<li><a href="stats.php">Player Stats</a></li>';

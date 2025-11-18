@@ -1,4 +1,5 @@
 <?php
+require_once("accountFactory.php");
 require_once("db.php");
 session_start();
 
@@ -7,16 +8,14 @@ if(!isset($_SESSION["account"])){
     header("Location: index.php");
     exit();
 }
-
-$userId = $_SESSION["account_id"];
-
-if (isset($_SESSION["account_id"])) {
+else
+{   
     try {
         $db = new PDO($attr, $db_user, $db_pwd, $options);
-
+        $userId = $_SESSION['account']->id;
         $result = $db->query("SELECT banned from accounts WHERE account_id = '$userId'");
         // Checking for Database Errors
-        if (!$result) {
+        if ($result) {
             $row = $result->fetch();
             if ($row['banned'] == 1)
             {
@@ -80,7 +79,7 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 <li><a href="index.php">Home</a></li>
                 <?php
                     if (isset($_SESSION["account"])){
-                        if (isset($_SESSION["role"]) && $_SESSION["role"] === "Moderator"){
+                        if ($_SESSION["account"]->role === "Moderator"){
                             echo '<li><a href="mod.php">Mod Panel</a></li>';
                         }
                         echo '<li><a href="stats.php">Player Stats</a></li>';
@@ -97,7 +96,7 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </header>
 
-<p id="player-stats-header"><?= $_SESSION["display_name"] ?> Stats :</p>
+<p id="player-stats-header"><?= $_SESSION['account']->display_name ?> Stats :</p>
 
 <div id="stats-tables-container">
     <!-- Left Summary Table -->
@@ -107,8 +106,8 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             <th>Correct Guesses</th>
         </tr>
         <tr><td>Daily</td><td><?= $counts['daily'] ?></td></tr>
-        <tr><td>Weekly</td><td><?= $counts['weekly'] ?></td></tr>
-        <tr><td>Monthly</td><td><?= $counts['monthly'] ?></td></tr>
+        <tr><td>Weekly (Starts on Monday)</td><td><?= $counts['weekly'] ?></td></tr>
+        <tr><td>Monthly (Starts on 1st)</td><td><?= $counts['monthly'] ?></td></tr>
         <tr><td>All Time</td><td><?= $counts['all_time'] ?></td></tr>
     </table>
 

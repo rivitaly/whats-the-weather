@@ -1,9 +1,11 @@
 <?php
-session_start();
 require_once("db.php");
+require_once("accountFactory.php");
+session_start();
+
 
 // If user is already logged in, redirect to index.php
-if (isset($_SESSION["account_id"])) {
+if (isset($_SESSION["account"])) {
     header("Location: index.php");
     exit();
 }
@@ -43,10 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
                 $errors["Database Error"] = "Could not retrieve user information";
             } else if ($row = $result->fetch()) { //if data exists
 
-                $_SESSION["account_id"] = $row["account_id"];
-                $_SESSION["role"] = $row["role"];
-                $_SESSION["username"] = $row["username"];
-                $_SESSION["display_name"] = $row["display_name"];
+                $account = AccountFactory::createAccount($row["account_id"], $row["username"], $row["display_name"], $row["role"]);
+  
+                $_SESSION["account"] = $account; //can use this acrosss php files so we can access the account (need to include accountFactory.php when using)
 
                 //send to index signed in
                 header("Location: index.php");
@@ -92,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
         <li><a href="index.php">Home</a></li>
         <?php
           if (isset($_SESSION["account"])){
-            if (isset($_SESSION["role"]) && $_SESSION["role"] === "Moderator"){
+            if ($_SESSION["account"]->role === "Moderator"){
               echo '<li><a href="mod.php">Mod Panel</a></li>';
             }
             echo '<li><a href="stats.php">Player Stats</a></li>';
