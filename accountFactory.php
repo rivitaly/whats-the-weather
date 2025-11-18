@@ -29,7 +29,7 @@ class Moderator extends Account
     public function ban($db, $ban_id)
     {
         // look for the username 
-        $result = $db->query("SELECT account_id FROM accounts WHERE account_id='$ban_id'");
+        $result = $db->query("SELECT banned FROM accounts WHERE account_id='$ban_id'");
         // Checking for Database Errors
         if (!$result) {
             $db = null;
