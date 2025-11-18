@@ -26,12 +26,24 @@ class Player extends Account
 
 class Moderator extends Account
 {
-    public function ban($db, $ban_username)
+    public function ban($db, $ban_id)
     {
         // look for the username 
-        $result = $db->query("SELECT display_name FROM accounts WHERE display_name='$ban_username'");
-        $match = $result->fetch();
-        //ban
+        $result = $db->query("SELECT account_id FROM accounts WHERE account_id='$ban_id'");
+        // Checking for Database Errors
+        if (!$result) {
+            $db = null;
+            header("Location: index.php");
+            // Ban Function
+        } else if ($row = $result->fetch()) {
+            // Swaps the values between 0 and 1 which represents banned and unbanned, 0 being unbanned and 1 being banned
+            $banUnban = $row['banned'] ? '0' : '1';
+            // Updates the database
+            $db->exec("UPDATE accounts SET banned = '$banUnban' WHERE account_id = '$ban_id'");
+            // Returns you to the Moderator Page
+            header("Location: mod.php");
+            exit();
+        }
     }
 }
 

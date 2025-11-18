@@ -1,10 +1,11 @@
 <?php
+require_once("accountFactory.php");
 require_once("db.php");
 session_start();
 
 if(isset($_SESSION["account"])) {
-   $playerAccount = $_SESSION["account_id"];
-   if($_SESSION["role"] != "Moderator") {
+   $playerAccount = $_SESSION["account"]->id;
+   if($_SESSION["account"]->role != "Moderator") {
       try {
         $db = new PDO($attr, $db_user, $db_pwd, $options);
         $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
