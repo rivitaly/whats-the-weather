@@ -4,7 +4,7 @@ require_once("db.php");
 require_once("accountFactory.php");
 
 // If user is already logged in, redirect to index.php
-if (isset($_SESSION["account"]->id)) {
+if (isset($_SESSION["account"])) {
     header("Location: index.php");
     exit();
 }
