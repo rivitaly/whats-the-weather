@@ -22,10 +22,7 @@ if (isset($_SESSION["account_id"])) {
     {
         header("Location: banned.php");
         exit();
-    }
-}
-
-  
+  } catch (PDOException $e) {
     throw new PDOException($e->getMessage(), (int) $e->getCode());
   }
 
