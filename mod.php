@@ -1,7 +1,6 @@
 <?php
 require_once("db.php");
 require_once("accountFactory.php");
-
 session_start();
 
 // Redirect if not logged in or not a Moderator
