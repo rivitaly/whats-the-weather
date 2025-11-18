@@ -1,7 +1,7 @@
 <?php
 require_once("db.php");
 session_start();
-$playerAccount = $_POST['account_id'];
+
 // Redirect if not logged in or not a Moderator
 if(!isset($_SESSION["account"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "Moderator"){ 
     header("Location: index.php");
@@ -13,13 +13,13 @@ else if($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 // Redirect if no account id is recieved
-else if (!$playerAccount) {
+else if (!$_POST['account_id']) {
     header("Location: index.php");
     exit();
 } else {
     try {
         $db = new PDO($attr, $db_user, $db_pwd, $options);
-
+        $playerAccount = $_POST['account_id'];
         $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
         // Checking for Database Errors
         if (!$result) {
@@ -44,3 +44,4 @@ else if (!$playerAccount) {
 // In the event of some unknown error, Redirects you back to the main page
 header("Location: index.php")
 ?>
+
