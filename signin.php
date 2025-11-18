@@ -43,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
                 $_SESSION["role"] = $row["role"];
                 $_SESSION["username"] = $row["username"];
                 $_SESSION["display_name"] = $row["display_name"];
-                $_SESSION["banned"] = $row["banned"];
 
                 //send to index signed in
                 header("Location: index.php");
