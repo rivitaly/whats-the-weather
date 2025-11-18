@@ -146,8 +146,7 @@ else
       <button title="Cloudy" class="weather-button" id="Clouds"><img src="assets/weather-icons/clouds.png"></button>
     </div>
   </div>
-
-  </div>
+  <a id="source-link" href="credits.php">Source Information</a>
 </body>
 
 </html>
