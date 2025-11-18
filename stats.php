@@ -87,6 +87,7 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                         echo '<li><a href="credits.php">Source Credits</a></li>';
                         echo '<li><a href="logout.php">Log Out</a></li>';
                     } else {
+                        echo '<li><a href="credits.php">Source Credits</a></li>';
                         echo '<li><a href="signin.php">Sign In</a></li>';
                         echo '<li><a href="signup.php">Sign Up</a></li>';
                     }
