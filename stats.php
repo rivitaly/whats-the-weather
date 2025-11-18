@@ -11,21 +11,22 @@ if(!isset($_SESSION["account"])){
 $userId = $_SESSION["account_id"];
 
 if (isset($_SESSION["account_id"])) {
-  
-  try { // data base connection
-    $db = new PDO($attr, $db_user, $db_pwd, $options);
-       // Checks for banned user and redirects if found
-    $playerAccount = $_SESSION['account_id'];
-    $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
-    $row = $result->fetch();
-    if ($row['banned'] == 1)
-    {
-        header("Location: banned.php");
-        exit();
-  } catch (PDOException $e) {
-    throw new PDOException($e->getMessage(), (int) $e->getCode());
-  }
-}
+    try {
+        $db = new PDO($attr, $db_user, $db_pwd, $options);
+
+        $result = $db->query("SELECT banned from accounts WHERE account_id = '$userId'");
+        // Checking for Database Errors
+        if (!$result) {
+            $row = $result->fetch();
+            if ($row['banned'] == 1)
+            {
+                header("Location: banned.php");
+                exit();
+            }
+        }
+    } catch (PDOException $e) {
+        throw new PDOException($e->getMessage(), (int) $e->getCode());
+    }
 }
 
 // Fetch aggregated counts
