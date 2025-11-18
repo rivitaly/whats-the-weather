@@ -15,10 +15,11 @@ if(isset($_SESSION["account"])) {
         }
       }
       
-    } catch (PDOException $e) {
+    catch (PDOException $e) {
         throw new PDOException($e->getMessage(), (int) $e->getCode());
     }
    }
+}
 ?>
 
 <!DOCTYPE html>
