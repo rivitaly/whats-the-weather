@@ -1,7 +1,8 @@
 <?php
-session_start();
 require_once("accountFactory.php");
 require_once("db.php");
+session_start();
+
 
 
 if (isset($_SESSION["account"])) {
@@ -95,7 +96,7 @@ else
     </nav>
   </div>
 </header>
-<p>Test2</p>
+<p>Test3</p>
   <div id="welcome-user">
     <?php echo "<p class='welcome-message'>{$welcome_message}</p>"?>
   </div>
