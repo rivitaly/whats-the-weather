@@ -4,8 +4,7 @@ session_start();
 
 //If not logged in or not Moderator, redirect
 if(!isset($_SESSION["account"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "Moderator"){
-    header("Location: index.php");
-    exit();
+
 }
 
 ?>
