@@ -31,27 +31,6 @@ if(!isset($_SESSION["account"]) || !isset($_SESSION["role"]) || $_SESSION["role"
         <span></span>
         <span></span>
       </label>
-
-      <!-- Dropdown Menu -->
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="index.php">Home</a></li>
-          <?php
-            if (isset($_SESSION["account"])){
-              if (isset($_SESSION["role"]) && $_SESSION["role"] === "Moderator"){
-                echo '<li><a href="mod.php">Mod Panel</a></li>';
-              }
-              echo '<li><a href="stats.php">Player Stats</a></li>';
-              echo '<li><a href="logout.php">Log Out</a></li>';
-              echo '<li><a href="stats.php">User Stats</a></li>';
-            }
-            else{
-              echo '<li><a href="signin.php">Sign In</a></li>';
-              echo '<li><a href="signup.php">Sign Up</a></li>';
-            }
-          ?>
-        </ul>
-      </nav>
     </div>
   </header>
   <p id="banned-text">You have been banned.</p>
