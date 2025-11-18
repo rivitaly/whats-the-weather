@@ -1,5 +1,23 @@
 <?php
 require_once("db.php");
+if (isset($_SESSION["account_id"])) {
+  
+  try { // data base connection
+    $db = new PDO($attr, $db_user, $db_pwd, $options);
+       // Checks for banned user and redirects if found
+    $playerAccount = $_SESSION['account_id'];
+    $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
+    $row = $result->fetch();
+    if ($row['banned'] == 1)
+    {
+        header("Location: banned.php");
+        exit();
+    }
+  } catch (PDOException $e) {
+    throw new PDOException($e->getMessage(), (int) $e->getCode());
+  }
+    $db = null;
+}
 
 //removes special characters from user input
 function test_input($data)
