@@ -9,7 +9,6 @@ if(!isset($_SESSION["account"]) || $_SESSION["account"]->role != "Moderator") {
     header("Location: index.php");
     exit();
 }
-
 try {
     $db = new PDO($attr, $db_user, $db_pwd, $options);
 } catch (PDOException $e) {
