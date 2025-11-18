@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
         <li><a href="index.php">Home</a></li>
         <?php
                 if (isset($_SESSION["account"])) {
-                  if (isset($_SESSION["role"]) && $_SESSION["role"] === "Moderator") {
+                  if ($_SESSION["account"]->role === "Moderator") {
                     echo '<li><a href="mod.php">Mod Panel</a></li>';
                   }
                   echo '<li><a href="stats.php">Player Stats</a></li>';
