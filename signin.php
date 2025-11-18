@@ -4,7 +4,7 @@ require_once("db.php");
 require_once("accountFactory.php");
 
 // If user is already logged in, redirect to index.php
-if (isset($_SESSION["account_id"])) {
+if (isset($_SESSION["account"]->id)) {
     header("Location: index.php");
     exit();
 }
@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
         <li><a href="index.php">Home</a></li>
         <?php
           if (isset($_SESSION["account"])){
-            if (isset($_SESSION["role"]) && $_SESSION["role"] === "Moderator"){
+            if ($_SESSION["account"]->role === "Moderator"){
               echo '<li><a href="mod.php">Mod Panel</a></li>';
             }
             echo '<li><a href="stats.php">Player Stats</a></li>';
