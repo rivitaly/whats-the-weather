@@ -25,6 +25,8 @@ if (isset($_SESSION["account_id"])) {
   } catch (PDOException $e) {
     throw new PDOException($e->getMessage(), (int) $e->getCode());
   }
+}
+}
 
 // Fetch aggregated counts
 $stmt = $db->prepare("
