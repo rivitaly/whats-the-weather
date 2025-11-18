@@ -1,9 +1,10 @@
 <?php
 session_start();
 require_once("db.php");
+require_once("accountFactory.php");
 
 // If user is already logged in, redirect to index.php
-if (isset($_SESSION["account_id"])) {
+if (isset($_SESSION["account"]->id)) {
     header("Location: index.php");
     exit();
 }
