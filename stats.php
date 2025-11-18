@@ -10,7 +10,11 @@ if(!isset($_SESSION["account"])){
 
 $userId = $_SESSION["account_id"];
 
-try {
+if (isset($_SESSION["account_id"])) {
+  
+  try { // data base connection
+    $db = new PDO($attr, $db_user, $db_pwd, $options);
+       // Checks for banned user and redirects if found
     $playerAccount = $_SESSION['account_id'];
     $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
     $row = $result->fetch();
@@ -18,8 +22,7 @@ try {
     {
         header("Location: banned.php");
         exit();
-    } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    }
 }
 
   
