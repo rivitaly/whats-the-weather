@@ -43,8 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign in
                 $errors["Database Error"] = "Could not retrieve user information";
             } else if ($row = $result->fetch()) { //if data exists
 
-                session_start();
-
                 $_SESSION["account_id"] = $row["account_id"];
                 $_SESSION["role"] = $row["role"];
                 $_SESSION["username"] = $row["username"];
