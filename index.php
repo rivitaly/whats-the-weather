@@ -4,12 +4,12 @@ require_once("accountFactory.php");
 require_once("db.php");
 
 
-if (isset($_SESSION["account_id"])) {
+if (isset($_SESSION["account"])) {
   
   try { // data base connection
     $db = new PDO($attr, $db_user, $db_pwd, $options);
        // Checks for banned user and redirects if found
-    $playerAccount = $_SESSION['account_id'];
+    $playerAccount = $_SESSION['account']->id;
     $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
     $row = $result->fetch();
     if ($row['banned'] == 1)
@@ -21,9 +21,7 @@ if (isset($_SESSION["account_id"])) {
     throw new PDOException($e->getMessage(), (int) $e->getCode());
   }
 
-  
-
-  $welcome_message = ($account->display_name == "") ? "Welcome user\n" : "Welcome back, {$account->display_name}\n";
+  $welcome_message = ($_SESSION['account']->display_name == "") ? "Welcome user\n" : "Welcome back, {$_SESSION['account']->display_name}\n";
 
 }
 else
@@ -54,9 +52,6 @@ else
   <link rel="icon" type="image/png" href="assets/favicon.ico"/>
 </head>
 
-<script>
-    const USER_LOGGED_IN = <?php echo isset($_SESSION["account"]) ? "true" : "false"; ?>;
-</script>
 <script type="module" src="js/main.js"></script>
 <script type="module" src="js/render.js"></script>
 
@@ -81,7 +76,7 @@ else
         <li><a href="index.php">Home</a></li>
         <?php
           if (isset($_SESSION["account"])){
-            if (isset($_SESSION["role"]) && $_SESSION["role"] === "Moderator"){
+            if ($_SESSION["account"]->role === "Moderator"){
               echo '<li><a href="mod.php">Mod Panel</a></li>';
             }
             echo '<li><a href="stats.php">Player Stats</a></li>';
