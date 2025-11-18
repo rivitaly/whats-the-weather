@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //post form from sign up
         $errors["Sign-Up Failed"] = "Invalid username and password. Usernames must be between 1 - 20 letters and passwords must be between 7 - 64 characters.";
         $dataOK = FALSE;
     } else if(!preg_match($unameRegex, $username)) { //if user input doesn't follow regex
-        $errprs["Sign-Up Failed"] = "Invalid username.  Must be between 1 - 20 letters.";
+        $errors["Sign-Up Failed"] = "Invalid username.  Must be between 1 - 20 letters.";
         $dataOK = FALSE;
     } else if($password < 7 && $password <= 64) { //if user input is invalid password
         $errors["Sign-Up Failed"] = "Invalid password.  Must be between 7 - 64 characters.";
