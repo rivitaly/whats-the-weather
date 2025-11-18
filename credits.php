@@ -96,7 +96,7 @@ session_start();
 
         <tr>
             <td>Weather Icons</td>
-            <td><a href="https://www.vecteezy.com/free-vector/weather target="_blank"">Vecteezy (Weather Icons)</a></td>
+            <td><a href="https://www.vecteezy.com/free-vector/weather" target="_blank">Vecteezy (Weather Icons)</a></td>
         </tr>
     </table>
 </div>
