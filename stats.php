@@ -7,13 +7,11 @@ if(!isset($_SESSION["account"])){
     header("Location: index.php");
     exit();
 }
-
-$userId = $_SESSION["account_id"];
-
-if (isset($_SESSION["account_id"])) {
+else
+{   
     try {
         $db = new PDO($attr, $db_user, $db_pwd, $options);
-
+        $userId = $_SESSION['account']->id;
         $result = $db->query("SELECT banned from accounts WHERE account_id = '$userId'");
         // Checking for Database Errors
         if (!$result) {
@@ -80,7 +78,7 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 <li><a href="index.php">Home</a></li>
                 <?php
                     if (isset($_SESSION["account"])){
-                        if (isset($_SESSION["role"]) && $_SESSION["role"] === "Moderator"){
+                        if ($_SESSION["account"]->role === "Moderator"){
                             echo '<li><a href="mod.php">Mod Panel</a></li>';
                         }
                         echo '<li><a href="stats.php">Player Stats</a></li>';
@@ -97,7 +95,7 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </header>
 
-<p id="player-stats-header"><?= $_SESSION["display_name"] ?> Stats :</p>
+<p id="player-stats-header"><?= $_SESSION['account']->display_name ?> Stats :</p>
 
 <div id="stats-tables-container">
     <!-- Left Summary Table -->
