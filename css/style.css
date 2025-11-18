@@ -466,6 +466,17 @@ body {
     background-color: var(--celestial-blue);
 }
 
+#banned-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#banned-text{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 24px;
+  text-align: center;
+}
 
 /* ALL BUTTONS */
 button {
