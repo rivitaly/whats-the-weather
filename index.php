@@ -13,7 +13,7 @@ if (isset($_SESSION["account"])) {
     $playerAccount = $_SESSION['account']->id;
     $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
     $row = $result->fetch();
-    if ($row['banned'] == 1)
+    if ($row['banned'] == '1')
     {
         header("Location: banned.php");
         exit();
@@ -96,7 +96,7 @@ else
     </nav>
   </div>
 </header>
-<p>Test3</p>
+<p>Test4</p>
   <div id="welcome-user">
     <?php echo "<p class='welcome-message'>{$welcome_message}</p>"?>
   </div>
