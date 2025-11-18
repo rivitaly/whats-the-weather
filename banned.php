@@ -2,7 +2,7 @@
 require_once("db.php");
 session_start();
 
-if(isset($_SESSION["account_id"])) {
+if(isset($_SESSION["account"])) {
    $playerAccount = $_SESSION["account_id"];
    if($_SESSION["role"] != "Moderator") {
       try {
