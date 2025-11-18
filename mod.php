@@ -1,9 +1,11 @@
 <?php
 require_once("db.php");
+require_once("accountFactory.php");
+
 session_start();
 
 // Redirect if not logged in or not a Moderator
-if(!isset($_SESSION["account"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "Moderator"){
+if(!isset($_SESSION["account"]) || $_SESSION["account"]->role != "Moderator") {
     header("Location: index.php");
     exit();
 }
@@ -13,7 +15,6 @@ try {
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }
-
 // Fetch all users: regular users first, then mods
 $stmt = $db->query("
     SELECT account_id, username, display_name, role, banned 
