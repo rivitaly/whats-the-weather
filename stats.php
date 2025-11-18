@@ -106,8 +106,8 @@ $guesses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             <th>Correct Guesses</th>
         </tr>
         <tr><td>Daily</td><td><?= $counts['daily'] ?></td></tr>
-        <tr><td>Weekly</td><td><?= $counts['weekly'] ?></td></tr>
-        <tr><td>Monthly</td><td><?= $counts['monthly'] ?></td></tr>
+        <tr><td>Weekly (Starts on Monday)</td><td><?= $counts['weekly'] ?></td></tr>
+        <tr><td>Monthly (Starts on 1st)</td><td><?= $counts['monthly'] ?></td></tr>
         <tr><td>All Time</td><td><?= $counts['all_time'] ?></td></tr>
     </table>
 
