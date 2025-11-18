@@ -13,7 +13,7 @@ if (isset($_SESSION["account"])) {
     $playerAccount = $_SESSION['account']->id;
     $result = $db->query("SELECT banned from accounts WHERE account_id = '$playerAccount'");
     $row = $result->fetch();
-    if ($row['banned'] == '1')
+    if ($row['banned'] == 1)
     {
         header("Location: banned.php");
         exit();

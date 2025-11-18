@@ -10,7 +10,7 @@ if(isset($_SESSION["account"])) {
         $db = new PDO($attr, $db_user, $db_pwd, $options);
         $result = $db->query("SELECT banned FROM accounts WHERE account_id = '$playerAccount'");
         $row = $result->fetch();
-        if($row['banned'] !== '1') {
+        if($row['banned'] != 1) {
           header("Location: index.php");
           exit();
         }
