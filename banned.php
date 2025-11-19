@@ -23,6 +23,7 @@ if(isset($_SESSION["account"])) {
 } else
 {
    header("Location: index.php");
+   exit();
 }
 ?>
 
