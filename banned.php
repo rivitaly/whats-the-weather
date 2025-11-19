@@ -20,6 +20,9 @@ if(isset($_SESSION["account"])) {
         throw new PDOException($e->getMessage(), (int) $e->getCode());
     }
    }
+} else
+{
+   header("Location: index.php");
 }
 ?>
 
