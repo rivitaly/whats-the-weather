@@ -1,7 +1,6 @@
 <?
 require_once("db.php");
 
-
 class Account
 {
     public $id;
@@ -23,12 +22,11 @@ class Player extends Account
     ///not sure if we will have any player specific functions
 }
 
-
 class Moderator extends Account
 {
     public function ban($db, $ban_id)
     {
-        // look for the username 
+        // Checks for Account Id for the player being banned or unbanned
         $result = $db->query("SELECT banned FROM accounts WHERE account_id='$ban_id'");
         // Checking for Database Errors
         if (!$result) {
@@ -47,10 +45,9 @@ class Moderator extends Account
     }
 }
 
-
 class AccountFactory
 {
-    public static function createAccount($n_id, $n_username, $n_display_name, $n_role)
+    public static function createAccount($n_id, $n_username, $n_display_name, $n_role) // Creates Account
     {
         switch ($n_role) {
             case "Moderator":
