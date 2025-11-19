@@ -79,12 +79,12 @@ session_start();
 
         <tr>
             <td>Earth Model</td>
-            <td><a href="https://sketchfab.com/3d-models/planeet-aarde-1dbdb56dd730412cb7e23f772b3794e5" target="_blank">Sketchfab Model</a></td>
+            <td><a href="https://sketchfab.com/3d-models/planeet-aarde-1dbdb56dd730412cb7e23f772b3794e5" target="_blank">dima051983 (Sketchfab Model)</a></td>
         </tr>
 
         <tr>
             <td>Rendering Engine</td>
-            <td><a href="https://threejs.org/" target="_blank">Three.js</a></td>
+            <td><a href="https://threejs.org/" target="_blank">mrdoob (Three.js)</a></td>
         </tr>
 
         <tr>
