@@ -5,6 +5,7 @@ function validateUsername(v_username) {
     var unameRegEx = /^[a-zA-Z]+$/;
     return (unameRegEx.test(v_username))
 }
+const start =performance.now();
 
 function validateLogin(event) {
     var user = document.getElementById("username");
@@ -33,3 +34,6 @@ function validateLogin(event) {
     if (flag === false)
         event.preventDefault();
 }
+
+const end = performance.now();
+console.log(`Execution time for signinHandlers.js: ${end - start} milliseconds`);

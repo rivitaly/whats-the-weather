@@ -1,6 +1,7 @@
 <?
 require_once("db.php");
 
+
 class Account
 {
     public $id;
@@ -22,6 +23,7 @@ class Player extends Account
     ///not sure if we will have any player specific functions
 }
 
+$start = microtime(true);
 class Moderator extends Account
 {
     public function ban($db, $ban_id)
@@ -44,6 +46,9 @@ class Moderator extends Account
         }
     }
 }
+$end = microtime(true);
+$execution_time = ($end - $start);
+echo "Execution time of Moderator class: " . $execution_time . " seconds\n";
 
 class AccountFactory
 {
